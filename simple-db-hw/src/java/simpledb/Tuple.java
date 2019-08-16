@@ -1,8 +1,8 @@
 package simpledb;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * Tuple maintains information about the contents of a tuple. Tuples have a
@@ -12,7 +12,9 @@ import java.util.Iterator;
 public class Tuple implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    private TupleDesc td;
+    private RecordId rid;
+    private LinkedList<Field> linkedList;
     /**
      * Create a new tuple with the specified schema (type).
      *
@@ -22,6 +24,7 @@ public class Tuple implements Serializable {
      */
     public Tuple(TupleDesc td) {
         // some code goes here
+        this.td = td;
     }
 
     /**
@@ -29,7 +32,7 @@ public class Tuple implements Serializable {
      */
     public TupleDesc getTupleDesc() {
         // some code goes here
-        return null;
+        return td;
     }
 
     /**
@@ -38,7 +41,7 @@ public class Tuple implements Serializable {
      */
     public RecordId getRecordId() {
         // some code goes here
-        return null;
+        return rid;
     }
 
     /**
@@ -49,6 +52,7 @@ public class Tuple implements Serializable {
      */
     public void setRecordId(RecordId rid) {
         // some code goes here
+        this.rid = rid;
     }
 
     /**
@@ -61,6 +65,10 @@ public class Tuple implements Serializable {
      */
     public void setField(int i, Field f) {
         // some code goes here
+        if(i>=0 && i<linkedList.size())
+        {
+            linkedList.set(i, f);
+        }
     }
 
     /**
@@ -71,7 +79,7 @@ public class Tuple implements Serializable {
      */
     public Field getField(int i) {
         // some code goes here
-        return null;
+        return linkedList.get(i);
     }
 
     /**
@@ -84,7 +92,13 @@ public class Tuple implements Serializable {
      */
     public String toString() {
         // some code goes here
-        throw new UnsupportedOperationException("Implement this");
+        //throw new UnsupportedOperationException("Implement this");
+        StringBuilder s = new StringBuilder();
+        for(Field f : linkedList)
+        {
+            s.append(f).append(" ");
+        }
+        return s.toString();
     }
 
     /**
@@ -94,7 +108,7 @@ public class Tuple implements Serializable {
     public Iterator<Field> fields()
     {
         // some code goes here
-        return null;
+        return linkedList.listIterator();
     }
 
     /**
@@ -103,5 +117,6 @@ public class Tuple implements Serializable {
     public void resetTupleDesc(TupleDesc td)
     {
         // some code goes here
+        this.td = td;
     }
 }
