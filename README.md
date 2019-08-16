@@ -1,1 +1,14 @@
-# cs-6.830 and cmu 15445
+# cs-6.830 
+
+
+
+
+
+## Lab1
+
+- **src/simpledb/TupleDesc.java** 
+
+ 
+
+  
+
