@@ -6,5 +6,5 @@
 
 - **src/simpledb/TupleDesc.java**
 
-  ![选区_025](/home/robot/picture/选区_025.png)
+  ![TupleDesc](/home/robot/picture/选区_025.png)
 
