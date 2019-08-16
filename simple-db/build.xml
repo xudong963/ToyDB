@@ -43,9 +43,9 @@
         <sequential>
             <mkdir dir="@{destdir}"/>
             <!-- avoids needing ant clean when changing interfaces -->
-            <depend srcdir="${srcdir}" destdir="${destdir}" cache="${depcache}"/>
+            <depend srcdir="@{srcdir}" destdir="@{destdir}" cache="${depcache}"/>
             <javac srcdir="@{srcdir}" destdir="@{destdir}" includeAntRuntime="no"
-                    debug="${compile.debug}" source="${sourceversion}">
+                   debug="${compile.debug}" source="${sourceversion}">
                 <compilerarg value="-Xlint:unchecked" />
                 <!--<compilerarg value="-Xlint:deprecation" />-->
                 <compileoptions/>
@@ -77,103 +77,103 @@
     <target name="eclipse" description="Make current directory an eclipse
     project">
         <echo file=".project" append="false">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;projectDescription&gt;
-    &lt;name&gt;simpledb&lt;/name&gt;
-    &lt;comment&gt;&lt;/comment&gt;
-    &lt;projects&gt;
-    &lt;/projects&gt;
-    &lt;buildSpec&gt;
-        &lt;buildCommand&gt;
+            &lt;projectDescription&gt;
+            &lt;name&gt;simpledb&lt;/name&gt;
+            &lt;comment&gt;&lt;/comment&gt;
+            &lt;projects&gt;
+            &lt;/projects&gt;
+            &lt;buildSpec&gt;
+            &lt;buildCommand&gt;
             &lt;name&gt;org.eclipse.jdt.core.javabuilder&lt;/name&gt;
             &lt;arguments&gt;
             &lt;/arguments&gt;
-        &lt;/buildCommand&gt;
-    &lt;/buildSpec&gt;
-    &lt;natures&gt;
-        &lt;nature&gt;org.eclipse.jdt.core.javanature&lt;/nature&gt;
-    &lt;/natures&gt;
-&lt;/projectDescription&gt;</echo>
+            &lt;/buildCommand&gt;
+            &lt;/buildSpec&gt;
+            &lt;natures&gt;
+            &lt;nature&gt;org.eclipse.jdt.core.javanature&lt;/nature&gt;
+            &lt;/natures&gt;
+            &lt;/projectDescription&gt;</echo>
         <echo file=".classpath" append="false">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;classpath&gt;
-    &lt;classpathentry kind=&quot;src&quot; output=&quot;bin/src&quot; path=&quot;src/java&quot;/&gt;
-    &lt;classpathentry kind=&quot;src&quot; output=&quot;bin/test&quot; path=&quot;test&quot;/&gt;
-    &lt;classpathentry kind=&quot;con&quot; path=&quot;org.eclipse.jdt.launching.JRE_CONTAINER&quot;/&gt;
-    &lt;classpathentry kind=&quot;output&quot; path=&quot;bin/src&quot;/&gt;
-    </echo>
-    <if> <available file="${lib}/junit-4.5.jar" /> <then>
+            &lt;classpath&gt;
+            &lt;classpathentry kind=&quot;src&quot; output=&quot;bin/src&quot; path=&quot;src/java&quot;/&gt;
+            &lt;classpathentry kind=&quot;src&quot; output=&quot;bin/test&quot; path=&quot;test&quot;/&gt;
+            &lt;classpathentry kind=&quot;con&quot; path=&quot;org.eclipse.jdt.launching.JRE_CONTAINER&quot;/&gt;
+            &lt;classpathentry kind=&quot;output&quot; path=&quot;bin/src&quot;/&gt;
+        </echo>
+        <if> <available file="${lib}/junit-4.5.jar" /> <then>
             <echo file=".classpath" append="true">
                 &lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/junit-4.5.jar&quot;/&gt;
             </echo>
         </then>
-    </if>
-    <if> <available file="${lib}/jline-0.9.94.jar" /> <then>
+        </if>
+        <if> <available file="${lib}/jline-0.9.94.jar" /> <then>
             <echo file=".classpath" append="true">
                 &lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/jline-0.9.94.jar&quot;/&gt;
             </echo>
         </then>
-    </if>
-    <if> <available file="${lib}/zql.jar" /> <then>
+        </if>
+        <if> <available file="${lib}/zql.jar" /> <then>
             <echo file=".classpath" append="true">
                 &lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/zql.jar&quot;/&gt;
             </echo>
         </then>
-    </if>
-    <if> <available file="${lib}/mina-core-2.0.4.jar" />    <then>
+        </if>
+        <if> <available file="${lib}/mina-core-2.0.4.jar" />    <then>
             <echo file=".classpath" append="true">
                 &lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/mina-core-2.0.4.jar&quot;/&gt;
             </echo>
         </then>
-    </if>
-    <if> <available file="${lib}/mina-filter-compression-2.0.4.jar" /> <then>
+        </if>
+        <if> <available file="${lib}/mina-filter-compression-2.0.4.jar" /> <then>
             <echo file=".classpath" append="true">
                 &lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/mina-filter-compression-2.0.4.jar&quot;/&gt;
             </echo>
         </then>
-    </if>
-    <if> <available file="${lib}/jzlib-1.0.7.jar" /> <then>
+        </if>
+        <if> <available file="${lib}/jzlib-1.0.7.jar" /> <then>
             <echo file=".classpath" append="true">
                 &lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/jzlib-1.0.7.jar&quot;/&gt;
             </echo>
         </then>
-    </if>
-    <if> <available file="${lib}/slf4j-api-1.6.1.jar" /> <then>
+        </if>
+        <if> <available file="${lib}/slf4j-api-1.6.1.jar" /> <then>
             <echo file=".classpath" append="true">
                 &lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/slf4j-api-1.6.1.jar&quot;/&gt;
             </echo>
         </then>
-    </if>
-    <if> <available file="${lib}/slf4j-log4j12-1.6.1.jar" /> <then>
+        </if>
+        <if> <available file="${lib}/slf4j-log4j12-1.6.1.jar" /> <then>
             <echo file=".classpath" append="true">
                 &lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/slf4j-log4j12-1.6.1.jar&quot;/&gt;
             </echo>
         </then>
-    </if>
-    <if> <available file="${lib}/log4j-1.2.17.jar" /> <then>
+        </if>
+        <if> <available file="${lib}/log4j-1.2.17.jar" /> <then>
             <echo file=".classpath" append="true">
                 &lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/log4j-1.2.17.jar&quot;/&gt;
             </echo>
         </then>
-    </if>
-    <if> <available file="${lib}/javassist-3.16.1-GA.jar" /> <then>
+        </if>
+        <if> <available file="${lib}/javassist-3.16.1-GA.jar" /> <then>
             <echo file=".classpath" append="true">
                 &lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/javassist-3.16.1-GA.jar&quot;/&gt;
             </echo>
         </then>
-    </if>
-    <echo file=".classpath" append="true">
-        &lt;/classpath&gt;
-    </echo>
+        </if>
+        <echo file=".classpath" append="true">
+            &lt;/classpath&gt;
+        </echo>
     </target>
 
     <target name="compile" description="Compile code">
-        <Compile srcdir="${src}/java" destdir="${build.src}">
+        <Compile srcdir="${src}" destdir="${build.src}">
             <classpath refid="classpath.base"/>
         </Compile>
-    <copy todir="${build}" flatten="true">
-        <fileset dir="${src}">
-            <include name="bin/*.sh"/>
-        </fileset>
-    </copy>
+        <copy todir="${build}" flatten="true">
+            <fileset dir="${src}">
+                <include name="bin/*.sh"/>
+            </fileset>
+        </copy>
     </target>
 
     <target name="javadocs" description="Build javadoc documentation">
@@ -239,7 +239,7 @@
 
         <!-- Check if the class exists -->
         <available property="test.exists" classname="simpledb.${test}">
-                <classpath refid="classpath.test" />
+            <classpath refid="classpath.test" />
         </available>
         <fail unless="test.exists" message="Test ${test} could not be found"/>
 
@@ -255,7 +255,7 @@
 
         <!-- Check if the class exists -->
         <available property="test.exists" classname="simpledb.systemtest.${test}">
-                <classpath refid="classpath.test" />
+            <classpath refid="classpath.test" />
         </available>
         <fail unless="test.exists" message="Test ${test} could not be found"/>
 
@@ -293,16 +293,16 @@
     </target>
 
     <target name="handin" depends="clean"
-        description="Create a tarball of your code to hand in">
+            description="Create a tarball of your code to hand in">
         <tar destfile="lab-handin.tar.bz2" compression="bzip2"
-            basedir="." />
+             basedir="." />
         <echo message="Tarball created!  Please submit 'lab-handin.tar.bz2' per the instructions in the lab document." />
-    <subant target="dist">
-        <fileset dir="." includes="build.xml"/>
-    </subant>
+        <subant target="dist">
+            <fileset dir="." includes="build.xml"/>
+        </subant>
     </target>
 
     <target name="test-and-handin" depends="test,systemtest,handin"
-        description="Run all the tests and system tests; if they succeed, create a tarball of the source code to submit" />
+            description="Run all the tests and system tests; if they succeed, create a tarball of the source code to submit" />
 
 </project>
