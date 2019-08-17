@@ -14,6 +14,6 @@
 
 - **src/simpdb/Catalog.java**
 
-  ![1566013084901](/root/.config/Typora/typora-user-images/1566013084901.png)
+  ![Catalog](/root/.config/Typora/typora-user-images/1566013084901.png)
 
   
