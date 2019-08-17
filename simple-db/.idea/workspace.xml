@@ -2,22 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efe87e52-94d6-415f-930a-f6fc6bd74d7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../test/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/src/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/testCode.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../simple-db-hw/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../simple-db-hw/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../simple-db-hw/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../simple-db-hw/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../simple-db-hw/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../simple-db-hw/build.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../simple-db-hw/src/java/simpledb/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/../simple-db-hw/src/java/simpledb/Tuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../simple-db-hw/src/java/simpledb/TupleDesc.java" beforeDir="false" afterPath="$PROJECT_DIR$/../simple-db-hw/src/java/simpledb/TupleDesc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Tuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/TupleDesc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/TupleDesc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/depcache/dependencies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/depcache/dependencies.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BTreeFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BTreeFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BTreeFileEncoder$EntryComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BTreeFileEncoder$EntryComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BTreeFileEncoder$ReverseEntryComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BTreeFileEncoder$ReverseEntryComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BTreeFileEncoder$TupleComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BTreeFileEncoder$TupleComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BTreeFileEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BTreeFileEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BTreeLeafPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BTreeLeafPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BTreeUtility$BTreeDeleter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BTreeUtility$BTreeDeleter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BTreeUtility$BTreeInserter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BTreeUtility$BTreeInserter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BTreeUtility$BTreeReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BTreeUtility$BTreeReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BTreeUtility$BTreeWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BTreeUtility$BTreeWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BTreeUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BTreeUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HashEquiJoin.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HashEquiJoin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFileEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapFileEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/LogicalPlan.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/LogicalPlan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/OperatorCardinality.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/OperatorCardinality.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/OrderBy.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/OrderBy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Project.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Project.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/QueryPlanVisualizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/QueryPlanVisualizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/SimpleDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/SimpleDb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/TupleIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/TupleIterator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Utility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/turnInLab1.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/turnInLab2.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/turnInLab3.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/turnInLab4.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/turnInLab5.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/turnInLab6.sh" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +100,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
