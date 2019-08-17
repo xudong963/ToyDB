@@ -1,8 +1,9 @@
 package simpledb;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
+
 
 /**
  * Tuple maintains information about the contents of a tuple. Tuples have a
@@ -14,7 +15,7 @@ public class Tuple implements Serializable {
     private static final long serialVersionUID = 1L;
     private TupleDesc td;
     private RecordId rid;
-    private LinkedList<Field> linkedList;
+    private ArrayList<Field> fields;
     /**
      * Create a new tuple with the specified schema (type).
      *
@@ -24,7 +25,17 @@ public class Tuple implements Serializable {
      */
     public Tuple(TupleDesc td) {
         // some code goes here
-        this.td = td;
+        if(td!=null)
+        {
+            this.td = td;
+            fields = new ArrayList<>(td.numFields());
+            int num = td.numFields();
+            while (num!=0)
+            {
+                fields.add(null);
+                num--;
+            }
+        }
     }
 
     /**
@@ -65,10 +76,8 @@ public class Tuple implements Serializable {
      */
     public void setField(int i, Field f) {
         // some code goes here
-        if(i>=0 && i<linkedList.size())
-        {
-            linkedList.set(i, f);
-        }
+        if(i>=0 && i<fields.size() && f!=null)
+            fields.set(i, f);
     }
 
     /**
@@ -79,7 +88,7 @@ public class Tuple implements Serializable {
      */
     public Field getField(int i) {
         // some code goes here
-        return linkedList.get(i);
+        return fields.get(i);
     }
 
     /**
@@ -94,7 +103,7 @@ public class Tuple implements Serializable {
         // some code goes here
         //throw new UnsupportedOperationException("Implement this");
         StringBuilder s = new StringBuilder();
-        for(Field f : linkedList)
+        for(Field f : fields)
         {
             s.append(f).append(" ");
         }
@@ -108,7 +117,7 @@ public class Tuple implements Serializable {
     public Iterator<Field> fields()
     {
         // some code goes here
-        return linkedList.listIterator();
+        return fields.listIterator();
     }
 
     /**

@@ -8,3 +8,8 @@
 
   ![TupleDesc](/home/robot/picture/选区_025.png)
 
+- **src/simpledb/Tuple.java**
+
+  ![Tuple](/root/.config/Typora/typora-user-images/1566008620397.png)
+
+  
