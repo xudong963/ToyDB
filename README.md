@@ -6,7 +6,7 @@
 
 - **src/simpledb/TupleDesc.java**
 
-  ![TupleDesc](https://github.com/DreaMer963/SimpleDB/blob/master/image/%E9%80%89%E5%8C%BA_025.png)
+  ![TupleDesc](https://github.com/DreaMer963/SimpleDB/blob/master/image/%E9%80%89%E5%8C%BA_023.png)
 
 - **src/simpledb/Tuple.java**
 
@@ -18,5 +18,8 @@
 
 - **src/simpledb/HeapPageId.java**
   ![HeapPageId](https://github.com/DreaMer963/SimpleDB/blob/master/image/%E9%80%89%E5%8C%BA_028.png)
+  
+- **src/simpledb/RecordId.java**
+  ![RecordId](https://github.com/DreaMer963/SimpleDB/blob/master/image/%E9%80%89%E5%8C%BA_025.png)
 
   
