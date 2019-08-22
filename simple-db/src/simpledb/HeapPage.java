@@ -3,6 +3,9 @@ package simpledb;
 import java.util.*;
 import java.io.*;
 
+import static java.lang.Math.floor;
+import static java.lang.Math.ceil;
+
 /**
  * Each instance of HeapPage stores data for one page of HeapFiles and 
  * implements the Page interface that is used by BufferPool.
@@ -20,7 +23,7 @@ public class HeapPage implements Page {
     final int numSlots;
 
     byte[] oldData;
-    private final Byte oldDataLock=new Byte((byte)0);
+    private final Byte oldDataLock= (byte) 0;
 
     /**
      * Create a HeapPage from a set of bytes of data read from disk.
@@ -67,7 +70,8 @@ public class HeapPage implements Page {
     */
     private int getNumTuples() {        
         // some code goes here
-        return 0;
+        // floor((BufferPool.getPageSize()*8) / (tuple size * 8 + 1))
+        return (int) floor((BufferPool.getPageSize()*8) / (td.getSize()*8 + 1));
 
     }
 
@@ -78,8 +82,7 @@ public class HeapPage implements Page {
     private int getHeaderSize() {        
         
         // some code goes here
-        return 0;
-                 
+        return (int)ceil(getNumTuples()/8);
     }
     
     /** Return a view of this page before it was modified
@@ -112,7 +115,7 @@ public class HeapPage implements Page {
      */
     public HeapPageId getId() {
     // some code goes here
-    throw new UnsupportedOperationException("implement this");
+        return pid;
     }
 
     /**
@@ -282,7 +285,7 @@ public class HeapPage implements Page {
      */
     public int getNumEmptySlots() {
         // some code goes here
-        return 0;
+        return numSlots-tuples.length;
     }
 
     /**
@@ -290,7 +293,10 @@ public class HeapPage implements Page {
      */
     public boolean isSlotUsed(int i) {
         // some code goes here
-        return false;
+        int index = i / 8;
+        int shift = i % 8;
+        byte b = 1;
+        return (header[index] & (b << shift)) != 0;
     }
 
     /**
@@ -307,6 +313,7 @@ public class HeapPage implements Page {
      */
     public Iterator<Tuple> iterator() {
         // some code goes here
+
         return null;
     }
 
