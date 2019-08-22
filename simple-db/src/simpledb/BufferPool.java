@@ -2,6 +2,8 @@ package simpledb;
 
 import java.io.*;
 
+import java.util.LinkedList;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -13,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * a page, BufferPool checks that the transaction has the appropriate
  * locks to read/write the page.
  * 
- * @Threadsafe, all fields are final
+ * @Threadsafe , all fields are final
  */
 public class BufferPool {
     /** Bytes per page, including header. */
@@ -25,7 +27,86 @@ public class BufferPool {
     other classes. BufferPool should use the numPages argument to the
     constructor instead. */
     public static final int DEFAULT_PAGES = 50;
+    private int numPages;
+    private LockManager lockManager;
+    private  ConcurrentHashMap<PageId, Page> pages;
+    private class Lock
+    {
+        private int lockType;
+        private TransactionId tid;
 
+        public Lock(int lockType, TransactionId tid)
+        {
+            this.lockType = lockType;
+            this.tid = tid;
+        }
+    }
+
+    private class LockManager
+    {
+        private ConcurrentHashMap<PageId, LinkedList<Lock>> mapLock;
+
+        LockManager()
+        {
+            mapLock = new ConcurrentHashMap<>();
+        }
+
+        public synchronized Boolean acquiredLock(TransactionId tid, PageId pid, int lockType)
+        {
+            if(mapLock.get(pid) == null)
+            {
+                Lock lock = new Lock(lockType, tid);
+                mapLock.get(pid).add(lock);
+                return true;
+            }
+            else
+            {
+                for(Lock lock: mapLock.get(pid))
+                {
+                    if(lock.tid == tid)
+                    {
+                        if(lock.lockType == lockType)
+                            return true;
+                        else
+                        {
+                            if(lockType == 0)
+                                return false;
+                            else
+                            {
+                                //exclusive lock can't coexist with other locks
+                                if(mapLock.get(pid).size()==1)
+                                {
+                                    lock.lockType=1;
+                                    return true;
+                                }
+                                else
+                                    return false;
+                            }
+                        }
+                    }
+                }
+                //now think tid doesn't have any lock
+                if(mapLock.get(pid).get(0).lockType==1)
+                    return false;
+                if(lockType == 0)
+                {
+                    Lock lock = new Lock(0, tid);
+                    mapLock.get(pid).add(lock);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public synchronized void releaseLock(PageId pid, TransactionId tid)
+        {
+            LinkedList<Lock> locks = mapLock.get(pid);
+            for(Lock lock: locks)
+                if(lock.tid == tid)
+                    locks.remove(lock);
+        }
+
+    }
     /**
      * Creates a BufferPool that caches up to numPages pages.
      *
@@ -33,6 +114,9 @@ public class BufferPool {
      */
     public BufferPool(int numPages) {
         // some code goes here
+        this.numPages = numPages;
+        lockManager = new LockManager();
+        pages = new ConcurrentHashMap<>();
     }
     
     public static int getPageSize() {
@@ -67,7 +151,34 @@ public class BufferPool {
     public  Page getPage(TransactionId tid, PageId pid, Permissions perm)
         throws TransactionAbortedException, DbException {
         // some code goes here
-        return null;
+        int lockType;
+        // only-read
+        if(perm.permLevel == 0)
+            lockType = 0;
+        else
+            lockType = 1;
+        long start = System.currentTimeMillis();
+        long timeOut = new Random().nextInt(2000) + 1000;
+        boolean isSucc = false;
+        while (!isSucc) {
+            long now = System.currentTimeMillis();
+            if (now - start > timeOut)
+                throw new TransactionAbortedException();
+            isSucc = lockManager.acquiredLock(tid, pid, lockType);
+        }
+        if(pages.get(pid)!=null)
+        {
+            return pages.get(pid);
+        }else
+        {
+            int tableId = pid.getTableId();
+            DbFile file = Database.getCatalog().getDatabaseFile(tableId);
+            Page page = file.readPage(pid);
+            if(numPages==pages.size())
+                evictPage();
+            pages.put(pid, page);
+            return page;
+        }
     }
 
     /**

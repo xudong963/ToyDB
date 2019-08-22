@@ -2,6 +2,9 @@
   <dictionary name="root">
     <words>
       <w>pkey</w>
+      <w>succ</w>
+      <w>tableid</w>
+      <w>tyep</w>
     </words>
   </dictionary>
 </component>
