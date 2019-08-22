@@ -6,18 +6,17 @@
 
 - **src/simpledb/TupleDesc.java**
 
-  ![TupleDesc](/home/robot/picture/选区_025.png)
+  ![TupleDesc](https://github.com/DreaMer963/SimpleDB/blob/master/image/%E9%80%89%E5%8C%BA_025.png)
 
 - **src/simpledb/Tuple.java**
 
-  ![Tuple](/root/.config/Typora/typora-user-images/1566008620397.png)
+  ![Tuple](https://github.com/DreaMer963/SimpleDB/blob/master/image/%E9%80%89%E5%8C%BA_026.png)
 
 - **src/simpdb/Catalog.java**
 
-  ![Catalog](/root/.config/Typora/typora-user-images/1566013084901.png)
+  ![Catalog](https://github.com/DreaMer963/SimpleDB/blob/master/image/%E9%80%89%E5%8C%BA_027.png)
 
-- **src/simpledb/HeapRageId.java**
-
-  ![1566473456875](/root/.config/Typora/typora-user-images/1566473456875.png)
+- **src/simpledb/HeapPageId.java**
+  ![HeapPageId](https://github.com/DreaMer963/SimpleDB/blob/master/image/%E9%80%89%E5%8C%BA_028.png)
 
   
