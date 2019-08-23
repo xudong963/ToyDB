@@ -285,7 +285,37 @@ public class HeapPage implements Page {
      */
     public int getNumEmptySlots() {
         // some code goes here
-        return numSlots-tuples.length;
+        int cnt = 0;
+        int b = 1;
+        for(int i=0; i<header.length; i++)
+        {
+            byte bt = header[i];
+
+            //Attention! : the high-order bits of the last byte may not correspond to a slot that is actually in the file
+            if(i==header.length-1)
+            {
+                for(int j=0; j<getNumTuples()%8; j++)
+                    if((bt&(b<<j))==0)
+                        cnt++;
+            }
+            if((bt&b)==0)
+                cnt++;
+            if((bt&(b<<1))==0)
+                cnt++;
+            if((bt&(b<<2))==0)
+                cnt++;
+            if((bt&(b<<3))==0)
+                cnt++;
+            if((bt&(b<<4))==0)
+                cnt++;
+            if((bt&(b<<5))==0)
+                cnt++;
+            if((bt&(b<<6))==0)
+                cnt++;
+            if((bt&(b<<7))==0)
+                cnt++;
+        }
+        return cnt;
     }
 
     /**
@@ -313,8 +343,14 @@ public class HeapPage implements Page {
      */
     public Iterator<Tuple> iterator() {
         // some code goes here
-
-        return null;
+        LinkedList<Tuple> linkedList = new LinkedList<>();
+        if(tuples.length==0)
+            return null;
+        for (Tuple tuple : tuples) {
+            if (tuple != null)
+                linkedList.add(tuple);
+        }
+        return linkedList.iterator();
     }
 
 }
