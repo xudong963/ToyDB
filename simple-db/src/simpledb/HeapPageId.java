@@ -41,10 +41,10 @@ public class HeapPageId implements PageId {
      */
     public int hashCode() {
         // some code goes here
-        String tid = ""+tableId;
-        String pno = ""+pgNo;
-        String str = tid+pno;
-        return Integer.parseInt(str);
+        int res = 5;
+        res = 7 * res + tableId;
+        res = 7 * res + pgNo;
+        return res;
     }
 
     /**

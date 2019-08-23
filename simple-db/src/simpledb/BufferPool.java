@@ -55,8 +55,11 @@ public class BufferPool {
         {
             if(mapLock.get(pid) == null)
             {
+                mapLock = new ConcurrentHashMap<>();
+                LinkedList<Lock> locks = new LinkedList<>();
                 Lock lock = new Lock(lockType, tid);
-                mapLock.get(pid).add(lock);
+                locks.add(lock);
+                mapLock.put(pid, locks);
                 return true;
             }
             else
