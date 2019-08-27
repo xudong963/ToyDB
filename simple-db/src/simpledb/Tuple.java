@@ -25,17 +25,11 @@ public class Tuple implements Serializable {
      */
     public Tuple(TupleDesc td) {
         // some code goes here
-        if(td!=null)
-        {
-            this.td = td;
-            fields = new ArrayList<>(td.numFields());
-            int num = td.numFields();
-            while (num!=0)
-            {
-                fields.add(null);
-                num--;
-            }
-        }
+        assert td.numFields()>0 : "It must be a valid TupleDesc instance with at least one field";
+        this.td = td;
+        fields = new ArrayList<>(td.numFields());
+        for(int i=0; i<td.numFields(); i++)
+            fields.add(null);
     }
 
     /**
@@ -76,8 +70,7 @@ public class Tuple implements Serializable {
      */
     public void setField(int i, Field f) {
         // some code goes here
-        if(i>=0 && i<fields.size() && f!=null)
-            fields.set(i, f);
+        fields.set(i, f);
     }
 
     /**

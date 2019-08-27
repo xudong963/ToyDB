@@ -82,8 +82,7 @@ public class SeqScan implements OpIterator {
 
     public void open() throws DbException, TransactionAbortedException {
         // some code goes here
-        if(myDbFileIterator!=null)
-            myDbFileIterator.open();
+        myDbFileIterator.open();
     }
 
     /**
@@ -140,7 +139,7 @@ public class SeqScan implements OpIterator {
     public Tuple next() throws NoSuchElementException,
             TransactionAbortedException, DbException {
         // some code goes here
-        return myDbFileIterator.readNext();
+        return myDbFileIterator.next();
     }
 
     public void close() {

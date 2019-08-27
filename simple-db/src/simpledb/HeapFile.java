@@ -113,7 +113,7 @@ public class HeapFile implements DbFile {
     }
 
     // see DbFile.java for javadocs
-    public class MyDbFileIterator extends AbstractDbFileIterator {
+    /*public class MyDbFileIterator extends AbstractDbFileIterator {
 
         private int tableId;
         private int pageNum;
@@ -171,6 +171,68 @@ public class HeapFile implements DbFile {
             pageId = new HeapPageId(tableId, pageIndex);
             page = (HeapPage) Database.getBufferPool().getPage(transactionId, pageId, Permissions.READ_ONLY);
             heapPageIterator = (HeapPage.HeapPageIterator) page.iterator();
+        }
+    }*/
+    public class MyDbFileIterator implements DbFileIterator
+    {
+        private int tableId;
+        private int pageNum;
+        private int pageIndex;
+        private TransactionId transactionId;
+        Iterator<Tuple> it;
+
+        public MyDbFileIterator(TransactionId tid)
+        {
+            transactionId = tid;
+            tableId = getId();
+            pageNum = numPages();
+            it = null;
+            pageIndex = -1;
+        }
+
+        public Iterator<Tuple> getBeginIt(int pageIndex) throws TransactionAbortedException, DbException {
+            PageId pageId = new HeapPageId(tableId, pageIndex);
+            return ((HeapPage)Database.getBufferPool().getPage(transactionId, pageId, Permissions.READ_ONLY)).iterator();
+        }
+
+        @Override
+        public void open() throws DbException, TransactionAbortedException {
+            pageIndex = 0;
+            it = getBeginIt(pageIndex);
+        }
+
+        @Override
+        public boolean hasNext() throws DbException, TransactionAbortedException {
+            if(pageIndex==-1) return false;
+            if(!it.hasNext())
+            {
+                if(pageIndex>=pageNum-1) return false;
+                else
+                {
+                    ++pageIndex;
+                    it = getBeginIt(pageIndex);
+                }
+            }
+            return it.hasNext();
+        }
+
+        @Override
+        public Tuple next() throws DbException, TransactionAbortedException, NoSuchElementException {
+            if(!this.hasNext())
+                throw new NoSuchElementException();
+            return it.next();
+        }
+
+        @Override
+        public void rewind() throws DbException, TransactionAbortedException {
+            close();
+            open();
+        }
+
+        @Override
+        public void close() {
+            pageIndex = -1;
+            it = null;
         }
     }
     public DbFileIterator iterator(TransactionId tid)  {

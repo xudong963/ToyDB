@@ -23,7 +23,7 @@ public class HeapPage implements Page {
     final int numSlots;
 
     byte[] oldData;
-    private final Byte oldDataLock= (byte) 0;
+    private final Byte oldDataLock= new Byte((byte) 0);
 
     /**
      * Create a HeapPage from a set of bytes of data read from disk.
@@ -71,7 +71,7 @@ public class HeapPage implements Page {
     private int getNumTuples() {        
         // some code goes here
         // floor((BufferPool.getPageSize()*8) / (tuple size * 8 + 1))
-        return (int) floor((BufferPool.getPageSize()*8) / (td.getSize()*8 + 1));
+        return (BufferPool.getPageSize()*8) / (td.getSize()*8 + 1);
 
     }
 
@@ -82,7 +82,8 @@ public class HeapPage implements Page {
     private int getHeaderSize() {        
         
         // some code goes here
-        return (int)ceil(getNumTuples()/8);
+        //return getNumTuples()/8;
+        return (numSlots+7) / 8;
     }
     
     /** Return a view of this page before it was modified
@@ -106,7 +107,7 @@ public class HeapPage implements Page {
     public void setBeforeImage() {
         synchronized(oldDataLock)
         {
-        oldData = getPageData().clone();
+            oldData = getPageData().clone();
         }
     }
 
@@ -326,6 +327,7 @@ public class HeapPage implements Page {
         int index = i / 8;
         int shift = i % 8;
         byte b = 1;
+        assert index<header.length : "Index out of bounds";
         return (header[index] & (b << shift)) != 0;
     }
 
