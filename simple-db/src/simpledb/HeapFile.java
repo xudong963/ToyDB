@@ -113,66 +113,6 @@ public class HeapFile implements DbFile {
     }
 
     // see DbFile.java for javadocs
-    /*public class MyDbFileIterator extends AbstractDbFileIterator {
-
-        private int tableId;
-        private int pageNum;
-        private int pageIndex;
-        private TransactionId transactionId;
-        private HeapPage.HeapPageIterator heapPageIterator;
-        private HeapPage page;
-        private HeapPageId pageId;
-
-        public MyDbFileIterator(TransactionId tid)
-        {
-            tableId = getId();
-            pageNum = numPages();
-            pageIndex = 0;
-            transactionId = tid;
-        }
-        @Override
-        protected Tuple readNext() throws DbException, TransactionAbortedException {
-            if(heapPageIterator==null)
-                return null;
-
-            if(heapPageIterator.hasNext())
-            {
-                pageIndex++;
-                return heapPageIterator.next();
-            }
-
-            if (pageIndex<pageNum)
-            {
-                pageIndex++;
-                pageId = new HeapPageId(tableId, pageIndex);
-                page = (HeapPage) Database.getBufferPool().getPage(transactionId, pageId, Permissions.READ_ONLY);
-                heapPageIterator = (HeapPage.HeapPageIterator) page.iterator();
-                if(heapPageIterator.hasNext())
-                {
-                    return heapPageIterator.next();
-                }
-            }
-            return null;
-        }
-
-        @Override
-        public void open() throws DbException, TransactionAbortedException {
-            if(pageIndex<pageNum)
-            {
-                pageId = new HeapPageId(tableId, pageIndex);
-                page = (HeapPage) Database.getBufferPool().getPage(transactionId, pageId, Permissions.READ_ONLY);
-                heapPageIterator = (HeapPage.HeapPageIterator) page.iterator();
-            }
-        }
-
-        @Override
-        public void rewind() throws DbException, TransactionAbortedException {
-            pageIndex = 0;
-            pageId = new HeapPageId(tableId, pageIndex);
-            page = (HeapPage) Database.getBufferPool().getPage(transactionId, pageId, Permissions.READ_ONLY);
-            heapPageIterator = (HeapPage.HeapPageIterator) page.iterator();
-        }
-    }*/
     public class MyDbFileIterator implements DbFileIterator
     {
         private int tableId;

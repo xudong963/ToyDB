@@ -3,22 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="efe87e52-94d6-415f-930a-f6fc6bd74d7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/depcache/dependencies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/depcache/dependencies.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Catalog$Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Catalog$Table.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Catalog.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Catalog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile$MyDbFileIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapFile$MyDbFileIterator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapPage$HeapPageIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapPage$HeapPageIterator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/SeqScan.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/SeqScan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/TupleDesc.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/TupleDesc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/Catalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Catalog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simpledb/HeapFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/HeapFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/HeapPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/HeapPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/SeqScan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/SeqScan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Tuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/TupleDesc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/TupleDesc.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
