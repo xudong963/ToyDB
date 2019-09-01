@@ -132,11 +132,13 @@ public class TestUtil {
         boolean matched = false;
         while (expected.hasNext()) {
             Tuple expectedTup = expected.next();
+            //System.out.println(expectedTup);
             matched = false;
             actual.rewind();
 
             while (actual.hasNext()) {
                 Tuple next = actual.next();
+                System.out.println(next);
                 if (compareTuples(expectedTup, next)) {
                     matched = true;
                     break;

@@ -70,6 +70,7 @@ public class Tuple implements Serializable {
      */
     public void setField(int i, Field f) {
         // some code goes here
+        assert i>=0 && i<td.numFields(): "invalid index";
         fields.set(i, f);
     }
 
@@ -81,6 +82,7 @@ public class Tuple implements Serializable {
      */
     public Field getField(int i) {
         // some code goes here
+        assert i>=0 && i<td.numFields(): "invalid index";
         return fields.get(i);
     }
 

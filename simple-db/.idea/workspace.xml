@@ -3,7 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="efe87e52-94d6-415f-930a-f6fc6bd74d7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/HeapFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/HeapFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/depcache/dependencies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/depcache/dependencies.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Aggregate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Aggregate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Filter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Filter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile$MyDbFileIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapFile$MyDbFileIterator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/IntegerAggregator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/IntegerAggregator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Join.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Join.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/JoinPredicate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/JoinPredicate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Predicate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Predicate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/StringAggregator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/StringAggregator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$CreateHeapFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$CreateHeapFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$LockGrabber.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$LockGrabber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$MockScan.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$MockScan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$SkeletonFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$SkeletonFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/Aggregate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Aggregate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Tuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/simpledb/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/simpledb/TestUtil.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +62,44 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="JUnit.JoinTest">
+    <configuration name="JoinTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="simple-db" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="simpledb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="simpledb.JoinTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PredicateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="simple-db" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="simpledb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="simpledb.PredicateTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.JoinTest" />
+        <item itemvalue="JUnit.PredicateTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
