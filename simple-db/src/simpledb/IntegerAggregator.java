@@ -27,11 +27,12 @@ public class IntegerAggregator implements Aggregator {
      * @param what
      *            the aggregation operator
      */
-    private int gbFieldNum;
+    //usually group by some column
+
+    private int gbFieldNum;  // see gbfield
     private Type gbFieldType;
     private int aggFieldNum;
     private Op aggOp;
-    private OpIterator opIterator;
     private String groupFieldName;
     private HashMap<Field, Integer> numGroupBy;
     private HashMap<Field, Integer> valGroupBy;
@@ -49,7 +50,8 @@ public class IntegerAggregator implements Aggregator {
     /**
      * Merge a new tuple into the aggregate, grouping as indicated in the
      * constructor
-     *
+     * creates a new group aggregate result if the group value has not yet
+     * been encountered.
      * @param tup
      *            the Tuple containing an aggregate field and a group-by field
      */
@@ -58,6 +60,7 @@ public class IntegerAggregator implements Aggregator {
         Field groupField;
         if(gbFieldNum == NO_GROUPING)
         {
+            //according to gbFieldType to initial groupField;
             if(gbFieldType == Type.INT_TYPE) groupField = new IntField(0);
             else
                 groupField = new StringField("", 100);
@@ -65,10 +68,12 @@ public class IntegerAggregator implements Aggregator {
         {
             groupField = tup.getField(gbFieldNum);
         }
+        //finish initial groupField
+        //initial groupField name to create TupleDesc
         groupFieldName = tup.getTupleDesc().getFieldName(gbFieldNum);
-        IntField aggField = (IntField) tup.getField(aggFieldNum);
+        IntField aggField = (IntField) tup.getField(aggFieldNum); //initial aggField
         if(!numGroupBy.containsKey(groupField)){
-            numGroupBy.put(groupField, 1);
+            numGroupBy.put(groupField, 1);       //count a number of every kind of groupField
             valGroupBy.put(groupField, aggField.getValue());
         }else
         {
@@ -80,14 +85,12 @@ public class IntegerAggregator implements Aggregator {
                 case MAX:
                     valGroupBy.put(groupField, Math.max(value, aggVal));
                     break;
-                case AVG:
+                case AVG:  //careful
+                case SUM:
                     valGroupBy.put(groupField, (value+aggVal));
                     break;
                 case MIN:
                     valGroupBy.put(groupField, Math.min(value, aggVal));
-                    break;
-                case SUM:
-                    valGroupBy.put(groupField, value+aggVal);
                     break;
                 case COUNT:
                     valGroupBy.put(groupField, numGroupBy.get(groupField));
