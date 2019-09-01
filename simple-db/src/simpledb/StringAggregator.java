@@ -1,5 +1,8 @@
 package simpledb;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Knows how to compute some aggregate over a set of StringFields.
  */
@@ -15,9 +18,19 @@ public class StringAggregator implements Aggregator {
      * @param what aggregation operator to use -- only supports COUNT
      * @throws IllegalArgumentException if what != COUNT
      */
-
+    private int gbFieldNum;  // see gbfield
+    private Type gbFieldType;
+    private int aggFieldNum;
+    private Op aggOp;
+    private String groupFieldName;
+    private HashMap<Field, Integer> numGroupBy;
     public StringAggregator(int gbfield, Type gbfieldtype, int afield, Op what) {
         // some code goes here
+        gbFieldNum = gbfield;
+        gbFieldType = gbfieldtype;
+        aggFieldNum = afield;
+        aggOp = what;
+        numGroupBy = new HashMap<>();
     }
 
     /**
@@ -26,6 +39,23 @@ public class StringAggregator implements Aggregator {
      */
     public void mergeTupleIntoGroup(Tuple tup) {
         // some code goes here
+        Field groupField;
+        if(gbFieldNum==NO_GROUPING)
+        {
+            if(gbFieldType==Type.INT_TYPE) groupField = new IntField(0);
+            else
+                groupField = new StringField("", 100);
+        }else
+            groupField = tup.getField(gbFieldNum);
+        groupFieldName = tup.getTupleDesc().getFieldName(gbFieldNum);
+        if(!numGroupBy.containsKey(groupField))
+        {
+            numGroupBy.put(groupField, 1);
+        }else
+        {
+            numGroupBy.put(groupField, numGroupBy.get(groupField)+1);
+            // only need to support count
+        }
     }
 
     /**
@@ -38,7 +68,35 @@ public class StringAggregator implements Aggregator {
      */
     public OpIterator iterator() {
         // some code goes here
-        throw new UnsupportedOperationException("please implement me for lab2");
+        if(gbFieldNum!=NO_GROUPING)
+        {
+            TupleDesc tupleDesc = new TupleDesc(
+                    new Type[] {gbFieldType, Type.INT_TYPE},
+                    new String[] {groupFieldName, aggOp.toString()}
+            );
+            ArrayList<Tuple> tuples = new ArrayList<>();
+            for(Field group: numGroupBy.keySet())
+            {
+                Tuple tuple = new Tuple(tupleDesc);
+                tuple.setField(0, group);
+                tuple.setField(1, new IntField(numGroupBy.get(group)));
+                tuples.add(tuple);
+            }
+            return new TupleIterator(tupleDesc, tuples);
+        }else
+        {
+            TupleDesc tupleDesc = new TupleDesc(
+                    new Type[] {Type.INT_TYPE},
+                    new String[] {aggOp.toString()}
+            );
+            ArrayList<Tuple> tuples = new ArrayList<>();
+            for(Field group : numGroupBy.keySet())
+            {
+                Tuple tuple = new Tuple(tupleDesc);
+                tuple.setField(0, new IntField(numGroupBy.get(group)));
+                tuples.add(tuple);
+            }
+            return new TupleIterator(tupleDesc, tuples);
+        }
     }
-
 }
