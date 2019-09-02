@@ -84,8 +84,14 @@ public class HeapFile implements DbFile {
 
     // see DbFile.java for javadocs
     public void writePage(Page page) throws IOException {
-        // some code goes here
-        // not necessary for lab1
+        PageId pageId = page.getId();
+        int pgSize = BufferPool.getPageSize();
+        int pgNum = pageId.getPageNumber();
+        byte[] data = page.getPageData();
+        RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw");
+        randomAccessFile.seek(pgNum * pgSize);
+        randomAccessFile.write(data);
+        randomAccessFile.close();
     }
 
     /**
@@ -99,17 +105,42 @@ public class HeapFile implements DbFile {
     // see DbFile.java for javadocs
     public ArrayList<Page> insertTuple(TransactionId tid, Tuple t)
             throws DbException, IOException, TransactionAbortedException {
-        // some code goes here
-        return null;
-        // not necessary for lab1
+        int numPages = numPages();
+        ArrayList<Page> arrPages = new ArrayList<>();
+        for(int i=0; i<numPages; i++)
+        {
+
+            HeapPageId heapPageId = new HeapPageId(getId(), i);   //getId() heapFile Table  because one file one table;
+            HeapPage heapPage = (HeapPage) Database.getBufferPool().getPage(tid, heapPageId, Permissions.READ_WRITE);
+            if(heapPage.getNumEmptySlots()>0)
+            {
+                heapPage.insertTuple(t);
+                arrPages.add(heapPage);
+                heapPage.markDirty(true, tid);
+                return arrPages;
+            }
+        }
+        HeapPageId newHeapPageId = new HeapPageId(getId(), numPages);
+        HeapPage newHeapPage = new HeapPage(newHeapPageId, HeapPage.createEmptyPageData());
+        newHeapPage.insertTuple(t);
+        arrPages.add(newHeapPage);
+        writePage(newHeapPage);
+
+        return arrPages;
+
     }
 
     // see DbFile.java for javadocs
     public ArrayList<Page> deleteTuple(TransactionId tid, Tuple t) throws DbException,
             TransactionAbortedException {
-        // some code goes here
-        return null;
-        // not necessary for lab1
+        ArrayList<Page> arrPage = new ArrayList<>();
+        RecordId recordId = t.getRecordId();
+        PageId pageId = recordId.getPageId();
+        HeapPage page = (HeapPage) Database.getBufferPool().getPage(tid, pageId, Permissions.READ_WRITE);
+        page.deleteTuple(t);
+        page.markDirty(true, tid);
+        arrPage.add(page);
+        return arrPage;
     }
 
     // see DbFile.java for javadocs
