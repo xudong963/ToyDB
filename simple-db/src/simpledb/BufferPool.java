@@ -2,6 +2,7 @@ package simpledb;
 
 import java.io.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
@@ -30,6 +31,7 @@ public class BufferPool {
     private int numPages;
     private LockManager lockManager;
     private  ConcurrentHashMap<PageId, Page> pages;
+
     private class Lock
     {
         private int lockType;
@@ -73,7 +75,7 @@ public class BufferPool {
                         else
                         {
                             if(lockType == 0)
-                                return false;
+                                return true;
                             else
                             {
                                 //exclusive lock can't coexist with other locks
@@ -156,7 +158,7 @@ public class BufferPool {
         // some code goes here
         int lockType;
         // only-read
-        if(perm.permLevel == 0)
+        if(perm == Permissions.READ_ONLY)
             lockType = 0;
         else
             lockType = 1;
@@ -195,7 +197,7 @@ public class BufferPool {
      */
     public  void releasePage(TransactionId tid, PageId pid) {
         // some code goes here
-        // not necessary for lab1|lab2
+        lockManager.releaseLock(pid, tid);
     }
 
     /**
@@ -245,8 +247,13 @@ public class BufferPool {
      */
     public void insertTuple(TransactionId tid, int tableId, Tuple t)
         throws DbException, IOException, TransactionAbortedException {
-        // some code goes here
-        // not necessary for lab1
+        DbFile file = Database.getCatalog().getDatabaseFile(tableId);
+        ArrayList<Page> ArrPages = file.insertTuple(tid, t);
+        for(Page page: ArrPages)
+        {
+            page.markDirty(true, tid);
+            pages.put(page.getId(), page);
+        }
     }
 
     /**
@@ -262,10 +269,17 @@ public class BufferPool {
      * @param tid the transaction deleting the tuple.
      * @param t the tuple to delete
      */
-    public  void deleteTuple(TransactionId tid, Tuple t)
+    public void deleteTuple(TransactionId tid, Tuple t)
         throws DbException, IOException, TransactionAbortedException {
-        // some code goes here
-        // not necessary for lab1
+        int tableId = t.getRecordId().getPageId().getTableId();
+        DbFile file = Database.getCatalog().getDatabaseFile(tableId);
+        ArrayList<Page> arrPages = file.deleteTuple(tid, t);
+        for(Page p: arrPages)
+        {
+            p.markDirty(true, tid);
+            pages.put(p.getId(), p);
+        }
+        
     }
 
     /**
