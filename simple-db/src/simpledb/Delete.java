@@ -19,25 +19,39 @@ public class Delete extends Operator {
      * @param child
      *            The child operator from which to read tuples for deletion
      */
+    private TransactionId tid;
+    private OpIterator child;
+    private OpIterator[] opIterators;
+    private TupleDesc td = new TupleDesc(new Type[]{Type.INT_TYPE});
+    private boolean deleted;
     public Delete(TransactionId t, OpIterator child) {
         // some code goes here
+        tid = t;
+        this.child = child;
+        deleted = false;
     }
 
     public TupleDesc getTupleDesc() {
         // some code goes here
-        return null;
+        return td;
     }
 
     public void open() throws DbException, TransactionAbortedException {
-        // some code goes here
+        // some code goes here`1
+        child.open();
+        super.open();
     }
 
     public void close() {
         // some code goes here
+        super.close();
+        child.close();
     }
 
     public void rewind() throws DbException, TransactionAbortedException {
         // some code goes here
+        close();
+        open();
     }
 
     /**
@@ -51,18 +65,35 @@ public class Delete extends Operator {
      */
     protected Tuple fetchNext() throws TransactionAbortedException, DbException {
         // some code goes here
-        return null;
+        if(deleted) return null;
+        int num = 0;
+        while(child.hasNext())
+        {
+            Tuple tuple = child.next();
+            try {
+                Database.getBufferPool().deleteTuple(tid, tuple);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            num++;
+        }
+        deleted = true;
+        Tuple t = new Tuple(td);
+        t.setField(0, new IntField(num));
+        return t;
     }
 
     @Override
     public OpIterator[] getChildren() {
         // some code goes here
-        return null;
+        opIterators[0] = child;
+        return opIterators;
     }
 
     @Override
     public void setChildren(OpIterator[] children) {
         // some code goes here
+        opIterators = children;
     }
 
 }
