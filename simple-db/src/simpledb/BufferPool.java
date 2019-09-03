@@ -288,8 +288,8 @@ public class BufferPool {
      *     break simpledb if running in NO STEAL mode.
      */
     public synchronized void flushAllPages() throws IOException {
-        // some code goes here
-        // not necessary for lab1
+        for(PageId pid: pages.keySet())
+            flushPage(pid);
 
     }
 
@@ -302,8 +302,7 @@ public class BufferPool {
         are removed from the cache so they can be reused safely
     */
     public synchronized void discardPage(PageId pid) {
-        // some code goes here
-        // not necessary for lab1
+        pages.remove(pid);
     }
 
     /**
@@ -311,8 +310,13 @@ public class BufferPool {
      * @param pid an ID indicating the page to flush
      */
     private synchronized  void flushPage(PageId pid) throws IOException {
-        // some code goes here
-        // not necessary for lab1
+        Page page = pages.get(pid);
+        DbFile file = Database.getCatalog().getDatabaseFile(pid.getTableId());
+
+        HeapFile heapFile = new HeapFile((File) file, file.getTupleDesc());
+        heapFile.writePage(page);
+        page.markDirty(false, null);
+        pages.remove(pid);
     }
 
     /** Write all pages of the specified transaction to disk.
@@ -326,9 +330,11 @@ public class BufferPool {
      * Discards a page from the buffer pool.
      * Flushes the page to disk to ensure dirty pages are updated on disk.
      */
-    private synchronized  void evictPage() throws DbException {
-        // some code goes here
-        // not necessary for lab1
+    private synchronized void evictPage() {
+        for(PageId pid : pages.keySet())
+        {
+            if(pages.get(pid).isDirty()==null)
+                discardPage(pid);
+        }
     }
-
 }
