@@ -1,14 +1,14 @@
 package simpledb.systemtest;
 
+import org.junit.Test;
+import simpledb.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
-
-import simpledb.*;
+import static org.junit.Assert.assertEquals;
 
 public abstract class FilterBase extends SimpleDbTestBase {
     private static final int COLUMNS = 3;
@@ -60,7 +60,7 @@ public abstract class FilterBase extends SimpleDbTestBase {
 
     @Test public void testEquals() throws
             DbException, TransactionAbortedException, IOException {
-        validatePredicate(0, 1, 1, 2, Predicate.Op.EQUALS);
+        validatePredicate(0, 1,     1, 2, Predicate.Op.EQUALS);
     }
 
     @Test public void testLessThan() throws

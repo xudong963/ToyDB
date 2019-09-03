@@ -102,6 +102,7 @@ public class BufferPoolWriteTest extends TestUtil.CreateHeapFile {
     	// delete 504 tuples from the first page
     	for (int i = 0; i < 504; ++i) {
     		Tuple t = tuples.get(i);
+    		//System.out.println(t);
         	Database.getBufferPool().deleteTuple(tid, t);
         	HeapPage p = (HeapPage) Database.getBufferPool().getPage(tid, t.getRecordId().getPageId(), Permissions.READ_ONLY);
         	assertEquals(i+1, p.getNumEmptySlots());

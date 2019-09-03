@@ -133,7 +133,7 @@ public class HeapFile implements DbFile {
     // see DbFile.java for javadocs
     public ArrayList<Page> deleteTuple(TransactionId tid, Tuple t) throws DbException,
             TransactionAbortedException {
-        ArrayList<Page> arrPage = new ArrayList<>();
+        ArrayList<Page> arrPage = new ArrayList<>(1);
         RecordId recordId = t.getRecordId();
         PageId pageId = recordId.getPageId();
         HeapPage page = (HeapPage) Database.getBufferPool().getPage(tid, pageId, Permissions.READ_WRITE);

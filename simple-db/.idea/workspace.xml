@@ -2,32 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efe87e52-94d6-415f-930a-f6fc6bd74d7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jline_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/depcache/dependencies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/depcache/dependencies.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Aggregate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Aggregate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BufferPool$Lock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BufferPool$LockManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BufferPool.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Database.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Delete.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Filter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Filter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile$MyDbFileIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapFile$MyDbFileIterator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/IntegerAggregator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/IntegerAggregator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile$MyDbFileIterator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapPage$HeapPageIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapPage$HeapPageIterator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Insert.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Join.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Join.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/JoinPredicate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/JoinPredicate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Predicate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Predicate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/StringAggregator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/StringAggregator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$CreateHeapFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$CreateHeapFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$LockGrabber.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$LockGrabber.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$MockScan.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$MockScan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$SkeletonFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$SkeletonFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/Aggregate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Aggregate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Tuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/simpledb/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/simpledb/TestUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/LogFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/LogicalPlan.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/SimpleDb.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Transaction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/BufferPoolWriteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/BufferPoolWriteTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/systemtest/DeleteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/systemtest/DeleteTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simple-db.iml" beforeDir="false" afterPath="$PROJECT_DIR$/simple-db.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/BufferPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/BufferPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/Delete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Delete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Filter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/HeapFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/HeapFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/HeapPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/HeapPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Insert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/Join.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Join.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/simpledb/BufferPoolWriteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/simpledb/BufferPoolWriteTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/simpledb/systemtest/DeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/simpledb/systemtest/DeleteTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/simpledb/systemtest/FilterBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/simpledb/systemtest/FilterBase.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="240" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -46,9 +65,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565940783579" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
@@ -63,32 +86,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.JoinTest">
-    <configuration name="JoinTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="simple-db" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="simpledb.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="simpledb.JoinTest" />
-      <option name="TEST_OBJECT" value="class" />
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="simpledb.SimpleDb" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PredicateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeleteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="simple-db" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="simpledb.*" />
+          <option name="PATTERN" value="simpledb.systemtest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="simpledb.PredicateTest" />
+      <option name="PACKAGE_NAME" value="simpledb.systemtest" />
+      <option name="MAIN_CLASS_NAME" value="simpledb.systemtest.DeleteTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -96,8 +110,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.JoinTest" />
-        <item itemvalue="JUnit.PredicateTest" />
+        <item itemvalue="JUnit.DeleteTest" />
+        <item itemvalue="JUnit.DeleteTest" />
       </list>
     </recent_temporary>
   </component>
@@ -135,20 +149,20 @@
       </map>
     </option>
   </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>10</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/simpledb/systemtest/DeleteTest.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/simple_db$DeleteTest.ic" NAME="DeleteTest Coverage Results" MODIFIED="1567477311249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>simpledb.systemtest.*</FILTER>
+    </SUITE>
   </component>
 </project>

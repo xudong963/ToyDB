@@ -1,10 +1,8 @@
 package simpledb;
 
-import java.util.*;
 import java.io.*;
-
-import static java.lang.Math.floor;
-import static java.lang.Math.ceil;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Each instance of HeapPage stores data for one page of HeapFiles and 
@@ -249,19 +247,11 @@ public class HeapPage implements Page {
      * @param t The tuple to delete
      */
     public void deleteTuple(Tuple t) throws DbException {
-        if(!td.equals(t.getTupleDesc()))
-            throw new DbException("tupleDesc not match");
-        int index;
-        for(int i=0; i<numSlots; i++)
-        {
-            if(tuples[i]==t)
-            {
-                tuples[i] = null;
-                markSlotUsed(i, false);
-                return;
-            }
-        }
-        throw new DbException("this tuple is not on this page");
+
+        RecordId rid = t.getRecordId();
+        if(rid.getPageId()!=pid)
+            throw new DbException("this tuple is not on this page");
+        markSlotUsed(rid.getTupleNumber(), false);
     }
 
     /**

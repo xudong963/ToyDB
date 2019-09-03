@@ -1,10 +1,11 @@
 package simpledb.systemtest;
 
-import static org.junit.Assert.*;
+import simpledb.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import simpledb.*;
+
+import static org.junit.Assert.*;
 
 public class DeleteTest extends FilterBase {
     ArrayList<ArrayList<Integer>> expectedTuples = null;
@@ -14,6 +15,7 @@ public class DeleteTest extends FilterBase {
             throws DbException, TransactionAbortedException, IOException {
         SeqScan ss = new SeqScan(tid, table.getId(), "");
         Filter filter = new Filter(predicate, ss);
+        //System.out.println(filter);
         Delete deleteOperator = new Delete(tid, filter);
 //        Query q = new Query(deleteOperator, tid);
 
@@ -21,13 +23,16 @@ public class DeleteTest extends FilterBase {
         deleteOperator.open();
         boolean hasResult = false;
         int result = -1;
+        //System.out.println("?:"+deleteOperator.hasNext());
         while (deleteOperator.hasNext()) {
             Tuple t = deleteOperator.next();
             assertFalse(hasResult);
             hasResult = true;
+            //System.out.println(1);
             assertEquals(SystemTestUtil.SINGLE_INT_DESCRIPTOR, t.getTupleDesc());
             result = ((IntField) t.getField(0)).getValue();
         }
+        //System.out.println(hasResult);
         assertTrue(hasResult);
 
         deleteOperator.close();

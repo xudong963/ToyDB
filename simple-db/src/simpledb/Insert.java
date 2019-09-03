@@ -76,7 +76,6 @@ public class Insert extends Operator {
      */
     protected Tuple fetchNext() throws TransactionAbortedException, DbException {
         // some code goes here
-        boolean flag = false;
         int num = 0;
         while (opIterator.hasNext())
         {
@@ -87,9 +86,8 @@ public class Insert extends Operator {
                 e.printStackTrace();
             }
             num++;
-            flag = true;
         }
-        if(!flag)
+        if(num==0)
             return null;
         Tuple t = new Tuple(getTupleDesc());
         t.setField(0, new IntField(num));
