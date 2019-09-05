@@ -1,5 +1,7 @@
 package simpledb;
 
+import java.util.Arrays;
+
 /** A class to represent a fixed-width histogram over a single integer-based field.
  */
 public class IntHistogram {
@@ -20,8 +22,24 @@ public class IntHistogram {
      * @param min The minimum integer value that will ever be passed to this class for histogramming
      * @param max The maximum integer value that will ever be passed to this class for histogramming
      */
+    private int [] height;
+    private int buckets;
+    private int minVal;
+    private int maxVal;
+    private int width;
+    private int ntups;
+
     public IntHistogram(int buckets, int min, int max) {
     	// some code goes here
+        this.buckets = buckets;
+        minVal = min;
+        maxVal = max;
+        height = new int [buckets];
+        for(int i=0; i<buckets; ++i)
+            height[i] = 0;
+        width  = Math.max((maxVal-minVal+1) / buckets, 1);
+        
+        ntups = 0;
     }
 
     /**
@@ -30,8 +48,33 @@ public class IntHistogram {
      */
     public void addValue(int v) {
     	// some code goes here
+        assert v>=minVal && v <= maxVal : "out of bound";
+        ntups ++;
+        int k = Math.min((v-minVal+1) / width, buckets-1) ;
+        assert k<buckets : "array out of bound";
+        height[k]++;
     }
+    private double estimateGT(int bucket, int v)
+    {
+        if(v<minVal) return 1.0;
+        if(v>maxVal) return 0;
+        int b_right = width * bucket;
+        double b_part = 1.0*(b_right - v) / width;
+        double b_f = 1.0*height[bucket] / ntups;
+        double b = b_f * b_part;
+        double sum = 0;
+        for(int i=bucket+1; i<buckets; ++i)
+            sum += height[i];
+        return sum/ntups + b;
 
+    }
+    private double estimateEQ(int bucket, int v)
+    {
+        if(v<minVal || v>maxVal) return 0;
+        double b_part = 1.0/width;
+        double b_f = 1.0*height[bucket] / ntups;
+        return b_f * b_part;
+    }
     /**
      * Estimate the selectivity of a particular predicate and operand on this table.
      * 
@@ -43,9 +86,35 @@ public class IntHistogram {
      * @return Predicted selectivity of this particular operator and value
      */
     public double estimateSelectivity(Predicate.Op op, int v) {
-
     	// some code goes here
-        return -1.0;
+
+        int bucket = Math.min((v-minVal+1) / width,buckets-1) ;
+        assert bucket<buckets : "array out of bound";
+        double ans;
+        switch (op)
+        {
+            case GREATER_THAN:
+                ans = estimateGT(bucket, v);
+                break;
+            case EQUALS:
+                ans = estimateEQ(bucket, v);
+                break;
+            case LESS_THAN:
+                ans = 1.0 - estimateGT(bucket, v) - estimateEQ(bucket, v);
+                break;
+            case LESS_THAN_OR_EQ:
+                ans = 1.0 - estimateGT(bucket, v);
+                break;
+            case GREATER_THAN_OR_EQ:
+                ans = estimateEQ(bucket, v) + estimateGT(bucket, v);
+                break;
+            case NOT_EQUALS:
+                ans = 1.0 - estimateEQ(bucket, v);
+                break;
+            default:
+                return -1;
+        }
+        return ans;
     }
     
     /**
@@ -67,6 +136,6 @@ public class IntHistogram {
      */
     public String toString() {
         // some code goes here
-        return null;
+        return Arrays.toString(height);
     }
 }
