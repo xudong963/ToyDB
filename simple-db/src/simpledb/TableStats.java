@@ -1,8 +1,6 @@
 package simpledb;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -76,6 +74,10 @@ public class TableStats {
      *            The cost per page of IO. This doesn't differentiate between
      *            sequential-scan IO and disk seeks.
      */
+    private int ioCostPerPage;
+    private int npages;
+    private int ntups;
+    private ArrayList<IntHistogram> histograms;
     public TableStats(int tableid, int ioCostPerPage) {
         // For this function, you'll have to get the
         // DbFile for the table in question,
@@ -85,6 +87,50 @@ public class TableStats {
         // necessarily have to (for example) do everything
         // in a single scan of the table.
         // some code goes here
+        histograms = new ArrayList<>();
+        ArrayList<Tuple> tuplesArr = new ArrayList<>();
+        this.ioCostPerPage = ioCostPerPage;
+        ntups = 0;
+        HeapFile file = (HeapFile)Database.getCatalog().getDatabaseFile(tableid);
+
+        // for estimateScanCost()
+        npages = file.numPages();
+        for(int i=0; i<file.numPages(); ++i)
+        {
+            HeapPageId pid = new HeapPageId(tableid, 1);
+            HeapPage p = (HeapPage) file.readPage(pid);
+            ntups += p.tuples.length;
+            Tuple[] tuples = p.tuples;
+            tuplesArr.addAll(Arrays.asList(tuples));
+        }
+
+        // for estimateSelectivity()
+        // TreeMap can keep the order of keys
+        TreeMap<Integer, ArrayList<Integer>> colMap = new TreeMap<>();  // store the values of column
+        for(int i=0; i<file.getTupleDesc().numFields(); ++i)
+        {
+            ArrayList<Integer> arrayList = new ArrayList<>();  // temp store values of colum
+            for (Tuple tuple : tuplesArr)
+            {
+                if (file.getTupleDesc().getFieldType(i) == Type.INT_TYPE && tuple != null)
+                    arrayList.add(((IntField) tuple.getField(i)).getValue());
+            }
+            colMap.put(i, arrayList);
+        }
+
+        // construct IntHistogram
+        for(Integer i: colMap.keySet())
+        {
+            if(colMap.get(i).size()!=0)
+            {
+                int max = Collections.max(colMap.get(i));
+                int min = Collections.min(colMap.get(i));
+                IntHistogram intHistogram = new IntHistogram(NUM_HIST_BINS, min, max);
+                for(Integer v: colMap.get(i))
+                    intHistogram.addValue(v);
+                histograms.add(intHistogram);
+            }
+        }
     }
 
     /**
@@ -101,7 +147,7 @@ public class TableStats {
      */
     public double estimateScanCost() {
         // some code goes here
-        return 0;
+        return npages*ioCostPerPage;
     }
 
     /**
@@ -115,7 +161,7 @@ public class TableStats {
      */
     public int estimateTableCardinality(double selectivityFactor) {
         // some code goes here
-        return 0;
+        return (int) (ntups*selectivityFactor);
     }
 
     /**
@@ -148,7 +194,9 @@ public class TableStats {
      */
     public double estimateSelectivity(int field, Predicate.Op op, Field constant) {
         // some code goes here
-        return 1.0;
+        IntHistogram intHistogram = histograms.get(field);
+        int v = ((IntField) constant).getValue();
+        return intHistogram.estimateSelectivity(op, v);
     }
 
     /**
@@ -156,7 +204,7 @@ public class TableStats {
      * */
     public int totalTuples() {
         // some code goes here
-        return 0;
+        return ntups;
     }
 
 }
