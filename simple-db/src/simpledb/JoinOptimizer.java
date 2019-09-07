@@ -156,7 +156,6 @@ public class JoinOptimizer {
             boolean t2pkey, Map<String, TableStats> stats,
             Map<String, Integer> tableAliasToId) {
         int card = 1;
-        // some code goes here
         switch (joinOp){
             case EQUALS:
                 if(t1pkey && !t2pkey)

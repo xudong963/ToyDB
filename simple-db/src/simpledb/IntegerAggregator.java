@@ -2,8 +2,6 @@ package simpledb;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.NoSuchElementException;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Knows how to compute some aggregate over a set of IntFields.
@@ -38,7 +36,6 @@ public class IntegerAggregator implements Aggregator {
     private HashMap<Field, Integer> valGroupBy;
 
     public IntegerAggregator(int gbfield, Type gbfieldtype, int afield, Op what) {
-        // some code goes here
         gbFieldNum = gbfield;
         gbFieldType = gbfieldtype;
         aggFieldNum = afield;
@@ -56,7 +53,6 @@ public class IntegerAggregator implements Aggregator {
      *            the Tuple containing an aggregate field and a group-by field
      */
     public void mergeTupleIntoGroup(Tuple tup) {
-        // some code goes here
         Field groupField;
         if(gbFieldNum == NO_GROUPING)
         {
@@ -110,7 +106,6 @@ public class IntegerAggregator implements Aggregator {
      *         the constructor.
      */
     public OpIterator iterator() {
-        // some code goes here
         if(gbFieldNum!=NO_GROUPING)
         {
             TupleDesc tupleDesc = new TupleDesc(

@@ -38,24 +38,20 @@ public class Insert extends Operator {
     }
 
     public TupleDesc getTupleDesc() {
-        // some code goes here
         return td;
     }
 
     public void open() throws DbException, TransactionAbortedException {
-        // some code goes here
         opIterator.open();
         super.open();
     }
 
     public void close() {
-        // some code goes here
         super.close();
         opIterator.close();
     }
 
     public void rewind() throws DbException, TransactionAbortedException {
-        // some code goes here
         close();
         open();
 
@@ -75,7 +71,6 @@ public class Insert extends Operator {
      * @see BufferPool#insertTuple
      */
     protected Tuple fetchNext() throws TransactionAbortedException, DbException {
-        // some code goes here
         int num = 0;
         while (opIterator.hasNext())
         {
@@ -97,14 +92,12 @@ public class Insert extends Operator {
 
     @Override
     public OpIterator[] getChildren() {
-        // some code goes here
         opIterators[0] = opIterator;
         return opIterators;
     }
 
     @Override
     public void setChildren(OpIterator[] children) {
-        // some code goes here
         opIterators = children;
     }
 }

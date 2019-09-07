@@ -26,7 +26,6 @@ public class Join extends Operator {
      *            Iterator for the right(inner) relation to join
      */
     public Join(JoinPredicate p, OpIterator child1, OpIterator child2) {
-        // some code goes here
         predicate = p;
         this.child1 = child1;
         this.child2 = child2;
@@ -35,7 +34,6 @@ public class Join extends Operator {
     }
 
     public JoinPredicate getJoinPredicate() {
-        // some code goes here
         return predicate;
     }
 
@@ -45,7 +43,6 @@ public class Join extends Operator {
      *       alias or table name.
      * */
     public String getJoinField1Name() {
-        // some code goes here
         return child1.getTupleDesc().getFieldName(predicate.getField1());
     }
 
@@ -55,7 +52,6 @@ public class Join extends Operator {
      *       alias or table name.
      * */
     public String getJoinField2Name() {
-        // some code goes here
         return child2.getTupleDesc().getFieldName(predicate.getField2());
     }
 
@@ -64,13 +60,11 @@ public class Join extends Operator {
      *      implementation logic.
      */
     public TupleDesc getTupleDesc() {
-        // some code goes here
         return TupleDesc.merge(child1.getTupleDesc(), child2.getTupleDesc());
     }
 
     public void open() throws DbException, NoSuchElementException,
             TransactionAbortedException {
-        // some code goes here
         child1.open();
         child2.open();
         super.open();
@@ -78,14 +72,12 @@ public class Join extends Operator {
     }
 
     public void close() {
-        // some code goes here
         super.close();
         child2.close();
         child1.close();
     }
 
     public void rewind() throws DbException, TransactionAbortedException {
-        // some code goes here
         close();
         open();
     }
@@ -109,7 +101,6 @@ public class Join extends Operator {
      * @see JoinPredicate#filter
      */
     protected Tuple fetchNext() throws TransactionAbortedException, DbException {
-        // some code goes here
         //TDD !!!
         while(child1.hasNext())
         {
@@ -145,7 +136,6 @@ public class Join extends Operator {
 
     @Override
     public OpIterator[] getChildren() {
-        // some code goes here
         opIterators[0] = child1;
         opIterators[1] = child2;
         return opIterators;
@@ -153,7 +143,6 @@ public class Join extends Operator {
 
     @Override
     public void setChildren(OpIterator[] children) {
-        // some code goes here
         opIterators = children;
     }
 

@@ -44,7 +44,6 @@ public class Catalog {
      * Creates a new, empty catalog.
      */
     public Catalog() {
-        // some code goes here
         tableMap = new ConcurrentHashMap<>();
     }
 
@@ -58,8 +57,6 @@ public class Catalog {
      * @param pkeyField the name of the primary key field
      */
     public void addTable(DbFile file, String name, String pkeyField) {
-        // some code goes here
-        // name conflict
         for(Table t: tableMap.values())
         {
             if(t.name.equals(name))
@@ -91,7 +88,6 @@ public class Catalog {
      * @throws NoSuchElementException if the table doesn't exist
      */
     public int getTableId(String name) throws NoSuchElementException {
-        // some code goes here
         for(Table t: tableMap.values())
         {
             if(t.name!=null && t.name.equals(name))
@@ -107,7 +103,6 @@ public class Catalog {
      * @throws NoSuchElementException if the table doesn't exist
      */
     public TupleDesc getTupleDesc(int tableid) throws NoSuchElementException {
-        // some code goes here
         if(tableMap.get(tableid) == null)
             throw new NoSuchElementException();
         return tableMap.get(tableid).getFile().getTupleDesc();
@@ -120,7 +115,6 @@ public class Catalog {
      *     function passed to addTable
      */
     public DbFile getDatabaseFile(int tableid) throws NoSuchElementException {
-        // some code goes here
         for(Integer id: tableMap.keySet())
         {
             if(id==tableid)
@@ -132,7 +126,6 @@ public class Catalog {
     }
 
     public String getPrimaryKey(int tableid) {
-        // some code goes here
         for(Integer id: tableMap.keySet())
         {
             if(id==tableid)
@@ -149,7 +142,6 @@ public class Catalog {
     }
 
     public String getTableName(int id) {
-        // some code goes here
         for(Integer i: tableMap.keySet())
         {
             if(i==id)
@@ -162,7 +154,6 @@ public class Catalog {
     
     /** Delete all tables from the catalog */
     public void clear() {
-        // some code goes here
         tableMap.clear();
     }
     

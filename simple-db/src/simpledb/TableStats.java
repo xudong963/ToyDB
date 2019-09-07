@@ -152,7 +152,6 @@ public class TableStats {
      * @return The estimated cost of scanning the table.
      */
     public double estimateScanCost() {
-        // some code goes here
         return npages*ioCostPerPage;
     }
 
@@ -166,7 +165,6 @@ public class TableStats {
      *         selectivityFactor
      */
     public int estimateTableCardinality(double selectivityFactor) {
-        // some code goes here
         return (int) (ntups*selectivityFactor);
     }
 
@@ -181,7 +179,6 @@ public class TableStats {
      * expected selectivity. You may estimate this value from the histograms.
      * */
     public double avgSelectivity(int field, Predicate.Op op) {
-        // some code goes here
         return 1.0;
     }
 
@@ -199,7 +196,6 @@ public class TableStats {
      *         predicate
      */
     public double estimateSelectivity(int field, Predicate.Op op, Field constant) {
-        // some code goes here
         if (td.getFieldType(field)==Type.INT_TYPE && histograms.containsKey(field)){
             IntHistogram intHistogram = histograms.get(field);
             int v = ((IntField) constant).getValue();
@@ -212,7 +208,6 @@ public class TableStats {
      * return the total number of tuples in this table
      * */
     public int totalTuples() {
-        // some code goes here
         return ntups;
     }
 }

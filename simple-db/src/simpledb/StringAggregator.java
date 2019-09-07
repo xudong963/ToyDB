@@ -25,7 +25,6 @@ public class StringAggregator implements Aggregator {
     private String groupFieldName;
     private HashMap<Field, Integer> numGroupBy;
     public StringAggregator(int gbfield, Type gbfieldtype, int afield, Op what) {
-        // some code goes here
         gbFieldNum = gbfield;
         gbFieldType = gbfieldtype;
         aggFieldNum = afield;
@@ -38,7 +37,6 @@ public class StringAggregator implements Aggregator {
      * @param tup the Tuple containing an aggregate field and a group-by field
      */
     public void mergeTupleIntoGroup(Tuple tup) {
-        // some code goes here
         Field groupField;
         if(gbFieldNum==NO_GROUPING)
         {
@@ -67,7 +65,6 @@ public class StringAggregator implements Aggregator {
      *   aggregate specified in the constructor.
      */
     public OpIterator iterator() {
-        // some code goes here
         if(gbFieldNum!=NO_GROUPING)
         {
             TupleDesc tupleDesc = new TupleDesc(

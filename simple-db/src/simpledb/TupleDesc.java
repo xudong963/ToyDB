@@ -59,7 +59,6 @@ public class TupleDesc implements Serializable {
      *        that are included in this TupleDesc
      * */
     public Iterator<TDItem> iterator() {
-        // some code goes here
         return arrayList.iterator();
     }
 
@@ -77,7 +76,6 @@ public class TupleDesc implements Serializable {
      *            be null.
      */
     public TupleDesc(Type[] typeAr, String[] fieldAr) {
-        // some code goes here
         assert typeAr.length > 0 : "TupleDesc must contain at least one entry";
         int typeArLen = typeAr.length;
         int fieldArLen = fieldAr.length;
@@ -104,7 +102,6 @@ public class TupleDesc implements Serializable {
      *            TupleDesc. It must contain at least one entry.
      */
     public TupleDesc(Type[] typeAr) {
-        // some code goes here
         assert typeAr.length > 0 : "TupleDesc must contain at least one entry";
         for (Type aTypeAr : typeAr) {
             TDItem item = new TDItem(aTypeAr, null);
@@ -116,7 +113,6 @@ public class TupleDesc implements Serializable {
      * @return the number of fields in this TupleDesc
      */
     public int numFields() {
-        // some code goes here
         return arrayList.size();
     }
 
@@ -130,7 +126,6 @@ public class TupleDesc implements Serializable {
      *             if i is not a valid field reference.
      */
     public String getFieldName(int i) throws NoSuchElementException {
-        // some code goes here
         if (i>=0 && i< arrayList.size())
             return arrayList.get(i).fieldName;
         else
@@ -148,7 +143,6 @@ public class TupleDesc implements Serializable {
      *             if i is not a valid field reference.
      */
     public Type getFieldType(int i) throws NoSuchElementException {
-        // some code goes here
         if(i>=0 && i<arrayList.size())
             return arrayList.get(i).fieldType;
         else
@@ -165,7 +159,6 @@ public class TupleDesc implements Serializable {
      *             if no field with a matching name is found.
      */
     public int fieldNameToIndex(String name) throws NoSuchElementException {
-        // some code goes here
         for(int i=0; i<arrayList.size(); i++)
         {
             String fieldName = arrayList.get(i).fieldName;
@@ -180,7 +173,6 @@ public class TupleDesc implements Serializable {
      *         Note that tuples from a given TupleDesc are of a fixed size.
      */
     public int getSize() {
-        // some code goes here
         int size = 0;
         for(TDItem td : arrayList)
         {
@@ -204,7 +196,6 @@ public class TupleDesc implements Serializable {
      * @return the new TupleDesc
      */
     public static TupleDesc merge(TupleDesc td1, TupleDesc td2) {
-        // some code goes here
         final int numFields = td1.numFields() + td2.numFields();
         Type []typeAr = new Type[numFields];
         String []fieldAr = new String[numFields];
@@ -240,7 +231,6 @@ public class TupleDesc implements Serializable {
      */
 
     public boolean equals(Object o) {
-        // some code goes here
         if(o == null)
             return false;
         if(o == this)
@@ -276,7 +266,6 @@ public class TupleDesc implements Serializable {
      * @return String describing this descriptor.
      */
     public String toString() {
-        // some code goes here
         StringBuilder s = new StringBuilder();
         for(TDItem td : arrayList)
         {

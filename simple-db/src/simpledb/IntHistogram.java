@@ -31,7 +31,6 @@ public class IntHistogram {
     private int lastWidth;
 
     public IntHistogram(int buckets, int min, int max) {
-    	// some code goes here
         this.buckets = buckets;
         minVal = min;
         maxVal = max;
@@ -48,7 +47,6 @@ public class IntHistogram {
      * @param v Value to add to the histogram
      */
     public void addValue(int v) {
-    	// some code goes here
         assert v>=minVal && v <= maxVal : "out of bound";
         ntups ++;
         int k = Math.min((v-minVal) / width, buckets-1) ;
@@ -83,7 +81,6 @@ public class IntHistogram {
      * @return Predicted selectivity of this particular operator and value
      */
     public double estimateSelectivity(Predicate.Op op, int v) {
-    	// some code goes here
 
         int bucket = Math.min((v-minVal) / width,buckets-1) ;
         int wid = bucket < buckets - 1? width : lastWidth;
@@ -125,7 +122,6 @@ public class IntHistogram {
      * */
     public double avgSelectivity()
     {
-        // some code goes here
         return 1.0;
     }
 
@@ -133,7 +129,6 @@ public class IntHistogram {
      * @return A string describing this histogram, for debugging purposes
      */
     public String toString() {
-        // some code goes here
         return Arrays.toString(height);
     }
 }
