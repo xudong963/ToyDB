@@ -1,18 +1,17 @@
 package simpledb;
 
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import simpledb.systemtest.SimpleDbTestBase;
+import simpledb.systemtest.SystemTestUtil;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Vector;
-
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
-import simpledb.systemtest.SimpleDbTestBase;
-import simpledb.systemtest.SystemTestUtil;
 
 public class JoinOptimizerTest extends SimpleDbTestBase {
 
@@ -254,6 +253,7 @@ public class JoinOptimizerTest extends SimpleDbTestBase {
         // be size of fk table)
         // BUT we had a bug in lab 4 in 2009 that suggested should be size of pk
         // table, so accept either
+        System.out.println("答案："+cardinality);
         Assert.assertTrue(cardinality == 800 || cardinality == 2000);
 
         cardinality = j.estimateJoinCardinality(new LogicalJoinNode("t1", "t2",

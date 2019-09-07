@@ -3,6 +3,12 @@
     <words>
       <w>gbfield</w>
       <w>gbfieldtype</w>
+      <w>npages</w>
+      <w>ntups</w>
+      <w>subplan</w>
+      <w>subplans</w>
+      <w>subquery</w>
+      <w>tablename</w>
     </words>
   </dictionary>
 </component>

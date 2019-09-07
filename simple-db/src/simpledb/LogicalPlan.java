@@ -223,7 +223,7 @@ public class LogicalPlan {
      *  @throws ParsingException if the field cannot be found in any of the tables, or if the
      *   field is ambiguous (appears in multiple tables)
      */
-    String disambiguateName(String name) throws ParsingException {
+    private String disambiguateName(String name) throws ParsingException {
 
         String[] fields = name.split("[.]");
         if (fields.length == 2 && (!fields[0].equals("null")))

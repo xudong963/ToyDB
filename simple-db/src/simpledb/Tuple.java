@@ -83,6 +83,8 @@ public class Tuple implements Serializable {
     public Field getField(int i) {
         // some code goes here
         assert i>=0 && i<td.numFields(): "invalid index";
+        if(fields.get(i)==null)
+            return null;
         return fields.get(i);
     }
 

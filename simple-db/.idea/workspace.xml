@@ -2,39 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efe87e52-94d6-415f-930a-f6fc6bd74d7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jline_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/robot.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/robot.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/depcache/dependencies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/depcache/dependencies.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BufferPool$Lock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BufferPool$LockManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BufferPool.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Database.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Delete.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Filter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Filter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile$MyDbFileIterator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapPage$HeapPageIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapPage$HeapPageIterator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapPage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Insert.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Join.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Join.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/LogFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/LogicalPlan.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/SimpleDb.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Transaction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/BufferPoolWriteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/BufferPoolWriteTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/systemtest/DeleteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/systemtest/DeleteTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple-db.iml" beforeDir="false" afterPath="$PROJECT_DIR$/simple-db.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/BufferPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/BufferPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/Delete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Delete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Filter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/HeapFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/HeapFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/HeapPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/HeapPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Insert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/Join.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Join.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/simpledb/BufferPoolWriteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/simpledb/BufferPoolWriteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/simpledb/systemtest/DeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/simpledb/systemtest/DeleteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/simpledb/systemtest/FilterBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/simpledb/systemtest/FilterBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/IntHistogram.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/IntHistogram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/JoinOptimizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/JoinOptimizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/LogicalPlan.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/LogicalPlan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/TableStats.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/TableStats.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/JoinOptimizerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/JoinOptimizerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TableStatsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TableStatsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log" beforeDir="false" afterPath="$PROJECT_DIR$/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/simple-db/simpledb/BufferPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/simple-db/simpledb/BufferPool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/simple-db/simpledb/Delete.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/simple-db/simpledb/Delete.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/simple-db/simpledb/IntHistogram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/simple-db/simpledb/IntHistogram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/simple-db/simpledb/JoinOptimizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/simple-db/simpledb/JoinOptimizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/simple-db/simpledb/LogicalPlan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/simple-db/simpledb/LogicalPlan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/simple-db/simpledb/TableStats.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/simple-db/simpledb/TableStats.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/simple-db/simpledb/Tuple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/simple-db/simpledb/Tuple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/simple-db/simpledb/JoinOptimizerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/simple-db/simpledb/JoinOptimizerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/simple-db/simpledb/TableStatsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/simple-db/simpledb/TableStatsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/IntHistogram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/IntHistogram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/JoinOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/JoinOptimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/LogicalPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/LogicalPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/TableStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/TableStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/Tuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/simpledb/JoinOptimizerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/simpledb/JoinOptimizerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/simpledb/TableStatsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/simpledb/TableStatsTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +80,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.JoinOptimizerTest.estimateJoinCardinality">
+    <configuration name="LogicalPlan" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="simpledb.LogicalPlan" />
+      <module name="simple-db" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="simpledb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="simpledb.SimpleDb" />
       <method v="2">
@@ -108,8 +115,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="JoinOptimizerTest.estimateJoinCardinality" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="simple-db" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="simpledb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="simpledb" />
+      <option name="MAIN_CLASS_NAME" value="simpledb.JoinOptimizerTest" />
+      <option name="METHOD_NAME" value="estimateJoinCardinality" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TableStatsTest.estimateSelectivityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="simple-db" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="simpledb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="simpledb" />
+      <option name="MAIN_CLASS_NAME" value="simpledb.TableStatsTest" />
+      <option name="METHOD_NAME" value="estimateSelectivityTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.JoinOptimizerTest.estimateJoinCardinality" />
+        <item itemvalue="JUnit.TableStatsTest.estimateSelectivityTest" />
+        <item itemvalue="Application.LogicalPlan" />
         <item itemvalue="JUnit.DeleteTest" />
         <item itemvalue="JUnit.DeleteTest" />
       </list>
@@ -153,9 +195,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/simpledb/systemtest/DeleteTest.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="13" />
+          <url>file://$PROJECT_DIR$/test/simpledb/JoinOptimizerTest.java</url>
+          <line>245</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

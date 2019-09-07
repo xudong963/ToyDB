@@ -5,8 +5,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * TableStats represents statistics (e.g., histograms) about base tables in a
- * query. 
- * 
+ * query.
+ *
  * This class is not needed in implementing lab1 and lab2.
  */
 public class TableStats {
@@ -22,7 +22,7 @@ public class TableStats {
     public static void setTableStats(String tablename, TableStats stats) {
         statsMap.put(tablename, stats);
     }
-    
+
     public static void setStatsMap(HashMap<String,TableStats> s)
     {
         try {
@@ -67,7 +67,7 @@ public class TableStats {
     /**
      * Create a new TableStats object, that keeps track of statistics on each
      * column of a table
-     * 
+     *
      * @param tableid
      *            The table over which to compute statistics
      * @param ioCostPerPage
@@ -77,7 +77,8 @@ public class TableStats {
     private int ioCostPerPage;
     private int npages;
     private int ntups;
-    private ArrayList<IntHistogram> histograms;
+    private TupleDesc td;
+    private TreeMap<Integer, IntHistogram> histograms;
     public TableStats(int tableid, int ioCostPerPage) {
         // For this function, you'll have to get the
         // DbFile for the table in question,
@@ -87,36 +88,40 @@ public class TableStats {
         // necessarily have to (for example) do everything
         // in a single scan of the table.
         // some code goes here
-        histograms = new ArrayList<>();
-        ArrayList<Tuple> tuplesArr = new ArrayList<>();
+        histograms = new TreeMap<>();
+        //ArrayList<Tuple> tuplesArr = new ArrayList<>();
         this.ioCostPerPage = ioCostPerPage;
         ntups = 0;
         HeapFile file = (HeapFile)Database.getCatalog().getDatabaseFile(tableid);
+        this.td = file.getTupleDesc();
 
-        // for estimateScanCost()
-        npages = file.numPages();
-        for(int i=0; i<file.numPages(); ++i)
-        {
-            HeapPageId pid = new HeapPageId(tableid, 1);
-            HeapPage p = (HeapPage) file.readPage(pid);
-            ntups += p.tuples.length;
-            Tuple[] tuples = p.tuples;
-            tuplesArr.addAll(Arrays.asList(tuples));
-        }
 
         // for estimateSelectivity()
         // TreeMap can keep the order of keys
+        TransactionId tid = new TransactionId();
+        SeqScan seqScan = new SeqScan(tid, tableid);
         TreeMap<Integer, ArrayList<Integer>> colMap = new TreeMap<>();  // store the values of column
-        for(int i=0; i<file.getTupleDesc().numFields(); ++i)
+        for(int i=0; i<td.numFields(); ++i)
         {
             ArrayList<Integer> arrayList = new ArrayList<>();  // temp store values of colum
-            for (Tuple tuple : tuplesArr)
-            {
-                if (file.getTupleDesc().getFieldType(i) == Type.INT_TYPE && tuple != null)
-                    arrayList.add(((IntField) tuple.getField(i)).getValue());
+            try {
+                seqScan.open();
+                while (seqScan.hasNext())
+                {
+                    ++ntups;
+                    Tuple tuple = seqScan.next();
+                    if(tuple.getField(i).getType() == Type.INT_TYPE){
+                        arrayList.add(((IntField) tuple.getField(i)).getValue());
+                    }
+                }
+            } catch (DbException e) {
+                e.printStackTrace();
+            } catch (TransactionAbortedException e) {
+                e.printStackTrace();
             }
             colMap.put(i, arrayList);
         }
+        ntups /= td.numFields();
 
         // construct IntHistogram
         for(Integer i: colMap.keySet())
@@ -128,8 +133,9 @@ public class TableStats {
                 IntHistogram intHistogram = new IntHistogram(NUM_HIST_BINS, min, max);
                 for(Integer v: colMap.get(i))
                     intHistogram.addValue(v);
-                histograms.add(intHistogram);
+                histograms.put(i, intHistogram);
             }
+
         }
     }
 
@@ -137,12 +143,12 @@ public class TableStats {
      * Estimates the cost of sequentially scanning the file, given that the cost
      * to read a page is costPerPageIO. You can assume that there are no seeks
      * and that no pages are in the buffer pool.
-     * 
+     *
      * Also, assume that your hard drive can only read entire pages at once, so
      * if the last page of the table only has one tuple on it, it's just as
      * expensive to read as a full page. (Most real hard drives can't
      * efficiently address regions smaller than a page at a time.)
-     * 
+     *
      * @return The estimated cost of scanning the table.
      */
     public double estimateScanCost() {
@@ -153,7 +159,7 @@ public class TableStats {
     /**
      * This method returns the number of tuples in the relation, given that a
      * predicate with selectivity selectivityFactor is applied.
-     * 
+     *
      * @param selectivityFactor
      *            The selectivity of any predicates over the table
      * @return The estimated cardinality of the scan with the specified
@@ -182,7 +188,7 @@ public class TableStats {
     /**
      * Estimate the selectivity of predicate <tt>field op constant</tt> on the
      * table.
-     * 
+     *
      * @param field
      *            The field over which the predicate ranges
      * @param op
@@ -194,9 +200,12 @@ public class TableStats {
      */
     public double estimateSelectivity(int field, Predicate.Op op, Field constant) {
         // some code goes here
-        IntHistogram intHistogram = histograms.get(field);
-        int v = ((IntField) constant).getValue();
-        return intHistogram.estimateSelectivity(op, v);
+        if (td.getFieldType(field)==Type.INT_TYPE && histograms.containsKey(field)){
+            IntHistogram intHistogram = histograms.get(field);
+            int v = ((IntField) constant).getValue();
+            return intHistogram.estimateSelectivity(op, v);
+        }
+        return 0;
     }
 
     /**
@@ -206,5 +215,4 @@ public class TableStats {
         // some code goes here
         return ntups;
     }
-
 }
