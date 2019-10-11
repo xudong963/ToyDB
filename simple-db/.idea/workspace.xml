@@ -2,35 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efe87e52-94d6-415f-930a-f6fc6bd74d7c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/robot.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/robot.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/depcache/dependencies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/depcache/dependencies.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Aggregate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Aggregate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BufferPool$LockManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BufferPool$LockManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BufferPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BufferPool.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Catalog.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Catalog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Delete.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Delete.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Filter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Filter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile$MyDbFileIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapFile$MyDbFileIterator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapPage$HeapPageIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapPage$HeapPageIterator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/HeapPageId.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/HeapPageId.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Insert.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Insert.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/IntHistogram$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/IntHistogram$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/IntHistogram.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/IntHistogram.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/IntegerAggregator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/IntegerAggregator$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/IntegerAggregator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/IntegerAggregator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Join.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Join.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/JoinOptimizer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/JoinOptimizer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/JoinOptimizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/JoinOptimizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/JoinPredicate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/JoinPredicate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/RecordId.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/RecordId.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/SeqScan.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/SeqScan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/StringAggregator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/StringAggregator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/TableStats.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/TableStats.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/Tuple.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/TupleDesc.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/TupleDesc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simpledb/LogicalPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/LogicalPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log" beforeDir="false" afterPath="$PROJECT_DIR$/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simpledb/BufferPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/BufferPool.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

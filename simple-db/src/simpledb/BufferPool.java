@@ -55,7 +55,7 @@ public class BufferPool {
 
         public synchronized Boolean acquiredLock(TransactionId tid, PageId pid, int lockType)
         {
-            if(mapLock.get(pid) == null)
+            if(mapLock.get(pid) == null || mapLock.get(pid).size()==0)
             {
                 mapLock = new ConcurrentHashMap<>();
                 LinkedList<Lock> locks = new LinkedList<>();
@@ -63,8 +63,7 @@ public class BufferPool {
                 locks.add(lock);
                 mapLock.put(pid, locks);
                 return true;
-            }
-            else
+            } else
             {
                 for(Lock lock: mapLock.get(pid))
                 {
@@ -109,6 +108,15 @@ public class BufferPool {
             for(Lock lock: locks)
                 if(lock.tid == tid)
                     locks.remove(lock);
+        }
+
+        public synchronized Boolean holdsLock(TransactionId tid, PageId pid) {
+            LinkedList<Lock> locks= mapLock.get(pid);
+            for(Lock lock : locks) {
+                if(lock.tid == tid)
+                    return true;
+            }
+            return false;
         }
 
     }
@@ -208,8 +216,7 @@ public class BufferPool {
 
     /** Return true if the specified transaction has a lock on the specified page */
     public boolean holdsLock(TransactionId tid, PageId p) {
-
-        return false;
+        return lockManager.holdsLock(tid, p);
     }
 
     /**
@@ -302,14 +309,16 @@ public class BufferPool {
      * Flushes a certain page to disk
      * @param pid an ID indicating the page to flush
      */
-    private synchronized  void flushPage(PageId pid) throws IOException {
+    private synchronized void flushPage(PageId pid) throws IOException {
+        if (!pages.containsKey(pid)) return;
         Page page = pages.get(pid);
-        DbFile file = Database.getCatalog().getDatabaseFile(pid.getTableId());
-
-        HeapFile heapFile = new HeapFile((File) file, file.getTupleDesc());
-        heapFile.writePage(page);
-        page.markDirty(false, null);
-        pages.remove(pid);
+        if(page.isDirty()!=null) {
+            DbFile file = Database.getCatalog().getDatabaseFile(pid.getTableId());
+            //HeapFile heapFile = new HeapFile((File) file, file.getTupleDesc());
+            file.writePage(page);
+            page.markDirty(false, null);
+            pages.remove(pid);
+        }
     }
 
     /** Write all pages of the specified transaction to disk.
