@@ -6,7 +6,7 @@
 
 **1. ToyDB框架图**
 
-![](D:\githubPro\SimpleDB\pdf\picture\ToyDB.png)
+![](https://github.com/DreaMer963/ToyDB/blob/master/pdf/picture/ToyDB.png)
 
 **2. 主要流程**
 
