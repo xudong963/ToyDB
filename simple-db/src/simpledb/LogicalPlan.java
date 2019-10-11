@@ -286,7 +286,7 @@ public class LogicalPlan {
      */ 
     public OpIterator physicalPlan(TransactionId t, Map<String,TableStats> baseTableStats, boolean explain) throws ParsingException {
         Iterator<LogicalScanNode> tableIt = tables.iterator();
-        HashMap<String,String> equivMap = new HashMap<String,String>();
+        HashMap<String,String> equivMap = new HashMap<>();
         HashMap<String,Double> filterSelectivities = new HashMap<String, Double>();
         HashMap<String,TableStats> statsMap = new HashMap<String,TableStats>();
 
