@@ -1,10 +1,7 @@
 package simpledb;
 
-import java.io.*;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Random;
+import java.io.IOException;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -47,7 +44,7 @@ public class BufferPool {
     private class LockManager
     {
         private ConcurrentHashMap<PageId, LinkedList<Lock>> mapLock;
-
+        // private HashMap<TransactionId, LinkedList<PageId>> tidToPid;
         LockManager()
         {
             mapLock = new ConcurrentHashMap<>();
@@ -62,6 +59,7 @@ public class BufferPool {
                 Lock lock = new Lock(lockType, tid);
                 locks.add(lock);
                 mapLock.put(pid, locks);
+
                 return true;
             } else
             {
@@ -119,6 +117,23 @@ public class BufferPool {
             return false;
         }
 
+        public synchronized LinkedList<PageId> getPid(TransactionId tid) {
+            LinkedList<PageId> pageIds = new LinkedList<>();
+            Iterator<PageId> pit = lockManager.mapLock.keys().asIterator();
+            while (pit.hasNext()) {
+                PageId pid = pit.next();
+                if(holdsLock(tid, pid))
+                    pageIds.add(pid);
+            }
+            return pageIds;
+        }
+
+        public synchronized void commitTransaction(TransactionId tid) {
+            LinkedList<PageId> pageIds = getPid(tid);
+            for(PageId pid: pageIds) {
+                releasePage(tid, pid);
+            }
+        }
     }
     /**
      * Creates a BufferPool that caches up to numPages pages.
@@ -211,7 +226,7 @@ public class BufferPool {
      * @param tid the ID of the transaction requesting the unlock
      */
     public void transactionComplete(TransactionId tid) throws IOException {
-
+        transactionComplete(tid, true);
     }
 
     /** Return true if the specified transaction has a lock on the specified page */
@@ -228,6 +243,17 @@ public class BufferPool {
      */
     public void transactionComplete(TransactionId tid, boolean commit)
         throws IOException {
+        for(PageId pid: lockManager.getPid(tid)) {
+            if(commit) {
+                flushPage(pid);
+            }else {
+                Page page = pages.get(pid);
+                if(page!=null && page.isDirty()==tid) {
+                    discardPage(pid);
+                }
+            }
+        }
+        lockManager.commitTransaction(tid);
     }
 
     /**
@@ -333,6 +359,7 @@ public class BufferPool {
     private synchronized void evictPage() {
         for(PageId pid : pages.keySet())
         {
+            //NO STEAL
             if(pages.get(pid).isDirty()==null)
                 discardPage(pid);
         }

@@ -1,10 +1,12 @@
 package simpledb;
 
-import java.util.*;
+import junit.framework.JUnit4TestAdapter;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Iterator;
+
 import static org.junit.Assert.assertEquals;
-import junit.framework.JUnit4TestAdapter;
 
 public class TransactionTest extends TestUtil.CreateHeapFile {
   private PageId p0, p1, p2;
@@ -86,7 +88,8 @@ public class TransactionTest extends TestUtil.CreateHeapFile {
       Tuple tup = (Tuple) it.next();
       IntField f0 = (IntField) tup.getField(0);
       IntField f1 = (IntField) tup.getField(1);
-
+      System.out.println(f0.getValue());
+      System.out.println(f1.getValue());
       if (f0.getValue() == 6 && f1.getValue() == 830) {
         found = true;
         break;

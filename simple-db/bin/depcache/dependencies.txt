@@ -482,12 +482,14 @@ simpledb.Database
 ||:simpledb.BufferPool$LockManager
 simpledb.BufferPool$LockManager
 java.util.Iterator
+java.util.Enumeration
 simpledb.BufferPool
 java.util.concurrent.ConcurrentHashMap
 simpledb.BufferPool$Lock
 java.lang.Boolean
 java.lang.Object
 java.util.LinkedList
+simpledb.PageId
 ||:simpledb.OpIterator
 simpledb.OpIterator
 simpledb.DbException
@@ -547,10 +549,12 @@ simpledb.IntField
 java.util.Collections
 ||:simpledb.TransactionTest
 simpledb.RecordId
+java.io.PrintStream
 simpledb.TestUtil
 java.util.Iterator
 simpledb.Utility
 simpledb.Page
+java.lang.System
 simpledb.TransactionId
 junit.framework.JUnit4TestAdapter
 simpledb.HeapPageId
@@ -2062,6 +2066,7 @@ simpledb.Permissions
 simpledb.Catalog
 java.lang.Boolean
 java.lang.Object
+java.util.LinkedList
 simpledb.TransactionAbortedException
 simpledb.PageId
 ||:simpledb.systemtest.AggregateTest$1
