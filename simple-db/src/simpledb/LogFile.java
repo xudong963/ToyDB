@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 import java.lang.reflect.*;
 
-/**
+/*
 LogFile implements the recovery subsystem of SimpleDb.  This class is
 able to write different log records as needed, but it is the
 responsibility of the caller to ensure that write ahead logging and
@@ -88,7 +88,6 @@ public class LogFile {
     final static int LONG_SIZE = 8;
 
     long currentOffset = -1;//protected by this
-//    int pageSize;
     int totalRecords = 0; // for PatchTest //protected by this
 
     HashMap<Long,Long> tidToFirstLogRecord = new HashMap<Long,Long>();
@@ -105,7 +104,7 @@ public class LogFile {
         @param f The log file's name
     */
     public LogFile(File f) throws IOException {
-	this.logFile = f;
+	    this.logFile = f;
         raf = new RandomAccessFile(f, "rw");
         recoveryUndecided = true;
 
@@ -243,7 +242,7 @@ public class LogFile {
         byte[] pageData = p.getPageData();
         raf.writeInt(pageData.length);
         raf.write(pageData);
-        //        Debug.log ("WROTE PAGE DATA, CLASS = " + pageClassName + ", table = " +  pid.getTableId() + ", page = " + pid.pageno());
+        // Debug.log ("WROTE PAGE DATA, CLASS = " + pageClassName + ", table = " +  pid.getTableId() + ", page = " + pid.pageno());
     }
 
     Page readPageData(RandomAccessFile raf) throws IOException {
@@ -466,7 +465,7 @@ public class LogFile {
         synchronized (Database.getBufferPool()) {
             synchronized(this) {
                 preAppend();
-                // some code goes here
+                
             }
         }
     }

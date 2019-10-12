@@ -239,8 +239,13 @@ public class BufferPool {
     public void transactionComplete(TransactionId tid, boolean commit)
         throws IOException {
         for(PageId pid: lockManager.getPid(tid)) {
+            if(pages.get(pid)==null)
+                continue;
             if(commit) {
                 flushPage(pid);
+                // use current page contents as the before-image
+                // for the next transaction that modifies this page
+                pages.get(pid).setBeforeImage();
             }else {
                 Page page = pages.get(pid);
                 if(page!=null && page.isDirty()==tid) {
@@ -335,16 +340,22 @@ public class BufferPool {
         Page page = pages.get(pid);
         if(page.isDirty()!=null) {
             DbFile file = Database.getCatalog().getDatabaseFile(pid.getTableId());
-            //HeapFile heapFile = new HeapFile((File) file, file.getTupleDesc());
+            // for undo
+            Database.getLogFile().logWrite(page.isDirty(), page.getBeforeImage(), page);
+            Database.getLogFile().force();
             file.writePage(page);
             page.markDirty(false, null);
-            pages.remove(pid);
         }
     }
 
     /** Write all pages of the specified transaction to disk.
      */
     public synchronized  void flushPages(TransactionId tid) throws IOException {
+        Set<PageId> pageIds = lockManager.getPid(tid);
+        if(pageIds==null) return;
+        for(PageId pageId : pageIds) {
+            flushPage(pageId);
+        }
     }
 
     /**
