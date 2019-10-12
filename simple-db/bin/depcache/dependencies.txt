@@ -480,15 +480,16 @@ simpledb.Transaction
 simpledb.TransactionAbortedException
 simpledb.Database
 ||:simpledb.BufferPool$LockManager
+java.util.Objects
 simpledb.BufferPool$LockManager
 java.util.Iterator
-java.util.Enumeration
 simpledb.BufferPool
-java.util.concurrent.ConcurrentHashMap
 simpledb.BufferPool$Lock
+java.util.Set
 java.lang.Boolean
+java.util.HashMap
 java.lang.Object
-java.util.LinkedList
+java.util.concurrent.ConcurrentLinkedQueue
 simpledb.PageId
 ||:simpledb.OpIterator
 simpledb.OpIterator
@@ -2055,6 +2056,7 @@ simpledb.DbException
 simpledb.TransactionId
 java.util.concurrent.ConcurrentHashMap
 simpledb.BufferPool$Lock
+java.util.Set
 java.util.Random
 java.io.IOException
 java.util.ArrayList
@@ -2066,7 +2068,6 @@ simpledb.Permissions
 simpledb.Catalog
 java.lang.Boolean
 java.lang.Object
-java.util.LinkedList
 simpledb.TransactionAbortedException
 simpledb.PageId
 ||:simpledb.systemtest.AggregateTest$1

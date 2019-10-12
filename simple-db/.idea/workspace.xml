@@ -7,9 +7,7 @@
       <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BufferPool$Lock.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BufferPool$Lock.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BufferPool$LockManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BufferPool$LockManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/src/simpledb/BufferPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/BufferPool.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TransactionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TransactionTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simpledb/BufferPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simpledb/BufferPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/simpledb/TransactionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/simpledb/TransactionTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

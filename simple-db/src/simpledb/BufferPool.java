@@ -3,6 +3,7 @@ package simpledb;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * BufferPool manages the reading and writing of pages into memory from
@@ -43,19 +44,19 @@ public class BufferPool {
 
     private class LockManager
     {
-        private ConcurrentHashMap<PageId, LinkedList<Lock>> mapLock;
+        private HashMap<PageId, ConcurrentLinkedQueue<Lock>> mapLock;
         // private HashMap<TransactionId, LinkedList<PageId>> tidToPid;
         LockManager()
         {
-            mapLock = new ConcurrentHashMap<>();
+            mapLock = new HashMap<>();
         }
 
         public synchronized Boolean acquiredLock(TransactionId tid, PageId pid, int lockType)
         {
             if(mapLock.get(pid) == null || mapLock.get(pid).size()==0)
             {
-                mapLock = new ConcurrentHashMap<>();
-                LinkedList<Lock> locks = new LinkedList<>();
+                mapLock = new HashMap<>();
+                ConcurrentLinkedQueue<Lock> locks = new ConcurrentLinkedQueue<>();
                 Lock lock = new Lock(lockType, tid);
                 locks.add(lock);
                 mapLock.put(pid, locks);
@@ -88,7 +89,7 @@ public class BufferPool {
                     }
                 }
                 //now think tid doesn't have any lock
-                if(mapLock.get(pid).get(0).lockType==1)
+                if(Objects.requireNonNull(mapLock.get(pid).peek()).lockType==1)
                     return false;
                 if(lockType == 0)
                 {
@@ -102,14 +103,14 @@ public class BufferPool {
 
         public synchronized void releaseLock(PageId pid, TransactionId tid)
         {
-            LinkedList<Lock> locks = mapLock.get(pid);
+            ConcurrentLinkedQueue<Lock> locks = mapLock.get(pid);
             for(Lock lock: locks)
                 if(lock.tid == tid)
                     locks.remove(lock);
         }
 
         public synchronized Boolean holdsLock(TransactionId tid, PageId pid) {
-            LinkedList<Lock> locks= mapLock.get(pid);
+            ConcurrentLinkedQueue<Lock> locks= mapLock.get(pid);
             for(Lock lock : locks) {
                 if(lock.tid == tid)
                     return true;
@@ -117,19 +118,13 @@ public class BufferPool {
             return false;
         }
 
-        public synchronized LinkedList<PageId> getPid(TransactionId tid) {
-            LinkedList<PageId> pageIds = new LinkedList<>();
-            Iterator<PageId> pit = lockManager.mapLock.keys().asIterator();
-            while (pit.hasNext()) {
-                PageId pid = pit.next();
-                if(holdsLock(tid, pid))
-                    pageIds.add(pid);
-            }
-            return pageIds;
+        public synchronized Set<PageId> getPid(TransactionId tid) {
+
+            return lockManager.mapLock.keySet();
         }
 
         public synchronized void commitTransaction(TransactionId tid) {
-            LinkedList<PageId> pageIds = getPid(tid);
+            Set<PageId> pageIds = getPid(tid);
             for(PageId pid: pageIds) {
                 releasePage(tid, pid);
             }
@@ -356,12 +351,14 @@ public class BufferPool {
      * Discards a page from the buffer pool.
      * Flushes the page to disk to ensure dirty pages are updated on disk.
      */
-    private synchronized void evictPage() {
-        for(PageId pid : pages.keySet())
-        {
+    private synchronized void evictPage() throws DbException {
+        for(PageId pid : pages.keySet()) {
             //NO STEAL
-            if(pages.get(pid).isDirty()==null)
+            if(pages.get(pid).isDirty()==null) {
                 discardPage(pid);
+                return;
+            }
         }
+        throw new DbException("all pages marked dirty");
     }
 }
