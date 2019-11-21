@@ -12,7 +12,4 @@
 
 - Parser -> Logical plan -> Physical plan -> Optimizer -> Execute plan
 
-
-
-
-
+**3**. 更多的细节在 **about.md** 中 
