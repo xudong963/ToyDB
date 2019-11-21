@@ -109,12 +109,16 @@ public LogicalPlan() {
     - **aggregation** 采用了 **StreamAgg**
 
 
- 
-
-
-
+**5**. **Execute plan**
+**6**. 
+**7. Locking** : 在 **BufferPool** 中使用了 **two phase locking**, **S-LOCK 和 X-LOCK**
+**8. Transactions**: 数据库系统的一组动作, 包括 插入, 删除, 读写等. **ACID**
+**9. HeapFile, HeapPage, BufferPool** : HeapFile 提供一种方法从磁盘读写数据(没有使用 **B+树**), HeapFile 中的 page 是 **slots** 的集合, 每一个 **slot** 都包含一个 **tuple**, 每一个 page 还包含一个由 **bitmap** 组成的 **header**. **BufferPool** 在内存中缓存从磁盘中读取的 **page**
 
 
 **不足**
 
 - 没有进行**逻辑优化**
+- Join 算法采用 **IndexLookupJoin** 效率很低
+- 不支持 **redo undo**
+
