@@ -101,7 +101,7 @@ public LogicalPlan() {
 
 - **Join 重排** : ToyDB 对 join 进行了重排, join 的顺序影响中间结果的数据量, 而且也会影响具体的 join 算法. 采用动态规划保留所有可能的 **join** 顺序, 然后遍历找出最小代价最小的
 
-- **Join 算法** : ToyDB 使用了 **IndexLookupJoin**, 性能是很低的
+- **Join 算法** : ToyDB 使用了 **Nested Loop Join**, 性能是很低的
 
 - **select, aggregate 和 group by** 
 
@@ -123,6 +123,6 @@ public LogicalPlan() {
 **不足**
 
 - 没有进行**逻辑优化**
-- Join 算法采用 **IndexLookupJoin** 效率很低
+- Join 算法采用 **Nested Loop Join** 效率很低
 - 不支持 **redo undo**
 
