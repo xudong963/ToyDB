@@ -52,7 +52,7 @@ select course.dept_name, count(*), avg(course.credits)
     group by course.dept_name;
 ```
 
-**1**. **Parser** (不熟悉)
+**1**. **Parser** 
 
 - 采用 **Zql** : 一个由 java 编写的 **SQL parser**
 
@@ -115,9 +115,7 @@ public LogicalPlan() {
 
 **7. Locking** : 在 **BufferPool** 中使用了 **two phase locking**, **S-LOCK 和 X-LOCK**
 
-**8. Transactions**: 数据库系统的一组动作, 包括 插入, 删除, 读写等. **ACID**
-
-**9. HeapFile, HeapPage, BufferPool** : HeapFile 提供一种方法从磁盘读写数据(没有使用 **B+树**), HeapFile 中的 page 是 **slots** 的集合, 每一个 **slot** 都包含一个 **tuple**, 每一个 page 还包含一个由 **bitmap** 组成的 **header**. **BufferPool** 在内存中缓存从磁盘中读取的 **page**
+**8. HeapFile, HeapPage, BufferPool** : HeapFile 提供一种方法从磁盘读写数据(没有使用 **B+树**), HeapFile 中的 page 是 **slots** 的集合, 每一个 **slot** 都包含一个 **tuple**, 每一个 page 还包含一个由 **bitmap** 组成的 **header**. **BufferPool** 在内存中缓存从磁盘中读取的 **page**
 
 
 **不足**
